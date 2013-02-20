@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using DotNetOpenAuth.OAuth.ChannelElements;
     using DotNetOpenAuth.OAuth.Messages;
 
@@ -314,7 +315,7 @@
             string scope;
             request.ExtraData.TryGetValue("scope", out scope);
 
-            var requestToken = new Database.RequestToken(request.Callback, consumer.Id, response.Token, response.TokenSecret, scope);
+            var requestToken = new Database.RequestToken(request.Callback, consumer.Id, response.Token, response.TokenSecret, scope != null ? scope.Split(',').AsEnumerable() : null);
             this.issuedTokens.Create(requestToken);
         }
 

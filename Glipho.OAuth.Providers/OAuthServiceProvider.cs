@@ -148,7 +148,8 @@ namespace Glipho.OAuth.Providers
 
                 if (tokenManager == null)
                 {
-                    tokenManager = new TokenManager();
+                    // TODO: Put this back in
+                    ////tokenManager = new TokenManager();
                 }
 
                 if (serviceProvider == null)
