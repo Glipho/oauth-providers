@@ -9,17 +9,56 @@ namespace Glipho.OAuth.Providers
 {
     public class RequestToken : IServiceProviderRequestToken
     {
-        public Uri Callback { get; set; }
+        public Uri Callback
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
-        public string ConsumerKey { get; set; }
+        public string ConsumerKey
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public Version ConsumerVersion { get; set; }
+        public Version ConsumerVersion
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string Token { get; set; }
+        public string Token
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string VerificationCode { get; set; }
+        public string VerificationCode
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         internal static IServiceProviderRequestToken FromDataRequestToken(global::Glipho.OAuth.Providers.Database.RequestToken requestToken)
         {

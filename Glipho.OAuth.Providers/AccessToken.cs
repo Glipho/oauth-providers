@@ -9,13 +9,25 @@ namespace Glipho.OAuth.Providers
 {
     public class AccessToken : IServiceProviderAccessToken
     {
-        public DateTime? ExpirationDate { get; set; }
+        public DateTime? ExpirationDate
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string[] Roles { get; set; }
+        public string[] Roles
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string Token { get; set; }
+        public string Token
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string Username { get; set; }
+        public string Username
+        {
+            get { throw new NotImplementedException(); }
+        }
 
         internal static IServiceProviderAccessToken FromDataAccessToken(Database.AccessToken accessToken)
         {
