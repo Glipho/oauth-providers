@@ -20,5 +20,15 @@ namespace Glipho.OAuth.Providers
         public string Token { get; set; }
 
         public string VerificationCode { get; set; }
+
+        internal static IServiceProviderRequestToken FromDataRequestToken(global::Glipho.OAuth.Providers.Database.RequestToken requestToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Database.RequestToken ToDataRequestToken()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -16,5 +16,10 @@ namespace Glipho.OAuth.Providers
         public string Token { get; set; }
 
         public string Username { get; set; }
+
+        internal static IServiceProviderAccessToken FromDataAccessToken(Database.AccessToken accessToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

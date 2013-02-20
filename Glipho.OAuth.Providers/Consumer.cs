@@ -9,16 +9,39 @@
     {
         public string Name { get; set; }
 
-        public Uri Callback { get; set; }
+        public Uri Callback
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public X509Certificate2 Certificate { get; set; }
+        public X509Certificate2 Certificate
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string Key { get; set; }
+        public string Key
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public string Secret { get; set; }
+        public string Secret
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public VerificationCodeFormat VerificationCodeFormat { get; set; }
+        public VerificationCodeFormat VerificationCodeFormat
+        {
+            get { throw new NotImplementedException(); }
+        }
 
-        public int VerificationCodeLength { get; set; }
+        public int VerificationCodeLength
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        internal static IConsumerDescription FromDataConsumer(Database.Consumer consumer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

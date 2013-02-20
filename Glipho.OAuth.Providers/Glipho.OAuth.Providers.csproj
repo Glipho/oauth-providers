@@ -70,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Glipho.OAuth.Core\Glipho.OAuth.Core.csproj">
+      <Project>{f58c6602-ae5d-4b52-8201-45ea2e0fb9be}</Project>
+      <Name>Glipho.OAuth.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Glipho.OAuth.Providers.Database\Glipho.OAuth.Providers.Database.csproj">
       <Project>{f79c738e-e9e6-4b80-a9a2-6d69a93099f8}</Project>
       <Name>Glipho.OAuth.Providers.Database</Name>
