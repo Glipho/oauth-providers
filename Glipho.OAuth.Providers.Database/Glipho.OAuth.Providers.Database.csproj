@@ -49,6 +49,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestToken.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Glipho.OAuth.Core\Glipho.OAuth.Core.csproj">
+      <Project>{f58c6602-ae5d-4b52-8201-45ea2e0fb9be}</Project>
+      <Name>Glipho.OAuth.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
