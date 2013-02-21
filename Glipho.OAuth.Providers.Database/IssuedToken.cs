@@ -107,10 +107,10 @@
             return this.ConsumerKey == token.ConsumerKey
                 && this.Created == token.Created
                 && this.Id == token.Id
-                && this.Scope.Equals(token.Scope)
                 && this.Token == token.Token
                 && this.TokenSecret == token.TokenSecret
-                && this.Username == token.Username;
+                && this.Username == token.Username
+                && (this.Scope != null && token.Scope != null && this.Scope.Equals(token.Scope));
         }
     }
 }
