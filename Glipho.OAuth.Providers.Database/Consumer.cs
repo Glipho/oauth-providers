@@ -83,24 +83,24 @@
         /// <summary>
         /// Determines whether the specified <see cref="Consumer"/> is equal to the current <see cref="Consumer"/>.
         /// </summary>
-        /// <param name="token">The <see cref="Consumer"/> to compare with the current <see cref="Consumer"/>.</param>
+        /// <param name="consumer">The <see cref="Consumer"/> to compare with the current <see cref="Consumer"/>.</param>
         /// <returns>
         /// true if the specified <see cref="Consumer"/> is equal to the current <see cref="Consumer"/>; otherwise false.
         /// </returns>
-        public bool Equals(Consumer token)
+        public bool Equals(Consumer consumer)
         {
-            if (token == null)
+            if (consumer == null)
             {
                 return false;
             }
 
-            return this.Name == token.Name
-                && this.Callback == token.Callback
-                && this.Id == token.Id
-                && this.Secret == token.Secret
-                && this.VerificationCodeFormat == token.VerificationCodeFormat
-                && this.VerificationCodeLength == token.VerificationCodeLength
-                && (this.Certificate != null && token.Certificate != null && this.Certificate.Equals(token.Certificate));
+            return this.Name == consumer.Name
+                && this.Callback == consumer.Callback
+                && this.Id == consumer.Id
+                && this.Secret == consumer.Secret
+                && this.VerificationCodeFormat == consumer.VerificationCodeFormat
+                && this.VerificationCodeLength == consumer.VerificationCodeLength
+                && (this.Certificate != null && consumer.Certificate != null && this.Certificate.Equals(consumer.Certificate));
         }
     }
 }
