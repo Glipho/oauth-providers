@@ -58,6 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessToken.cs" />
+    <Compile Include="Configuration\ProvidersSection.csd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProvidersSection.csd</DependentUpon>
+    </Compile>
     <Compile Include="Consumer.cs" />
     <Compile Include="NonceStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +72,20 @@
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Configuration\ProvidersSection.csd">
+      <Generator>CsdFileGenerator</Generator>
+      <LastGenOutput>ProvidersSection.csd.cs</LastGenOutput>
+    </None>
+    <None Include="Configuration\ProvidersSection.csd.config">
+      <DependentUpon>ProvidersSection.csd</DependentUpon>
+    </None>
+    <None Include="Configuration\ProvidersSection.csd.diagram">
+      <DependentUpon>ProvidersSection.csd</DependentUpon>
+    </None>
+    <None Include="Configuration\ProvidersSection.csd.xsd">
+      <DependentUpon>ProvidersSection.csd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +97,9 @@
       <Project>{f79c738e-e9e6-4b80-a9a2-6d69a93099f8}</Project>
       <Name>Glipho.OAuth.Providers.Database</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
