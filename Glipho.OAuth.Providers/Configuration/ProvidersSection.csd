@@ -21,6 +21,13 @@
       </configurationSectionProperties>
     </configurationSectionGroup>
     <configurationSection name="ServiceProvider" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="serviceProvider">
+      <attributeProperties>
+        <attributeProperty name="TokenProvider" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="tokenProvider" isReadOnly="false" defaultValue="false">
+          <type>
+            <externalTypeMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/Boolean" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
       <elementProperties>
         <elementProperty name="Endpoints" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="endpoints" isReadOnly="false">
           <type>
@@ -30,6 +37,11 @@
         <elementProperty name="Nonces" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="nonces" isReadOnly="false">
           <type>
             <configurationElementMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/Nonces" />
+          </type>
+        </elementProperty>
+        <elementProperty name="RoleProvider" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="roleProvider" isReadOnly="false">
+          <type>
+            <configurationElementMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/RoleProvider" />
           </type>
         </elementProperty>
       </elementProperties>
@@ -67,6 +79,15 @@
         <attributeProperty name="ClearingInterval" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="clearingInterval" isReadOnly="false" defaultValue="&quot;00:10:00&quot;">
           <type>
             <externalTypeMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/TimeSpan" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElement name="RoleProvider">
+      <attributeProperties>
+        <attributeProperty name="EnableCustomRoleProvider" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="enableCustomRoleProvider" isReadOnly="true" defaultValue="false">
+          <type>
+            <externalTypeMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/Boolean" />
           </type>
         </attributeProperty>
       </attributeProperties>

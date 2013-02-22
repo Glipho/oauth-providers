@@ -74,6 +74,32 @@ namespace Glipho.OAuth.Configuration
         }
         #endregion
         
+        #region TokenProvider Property
+        /// <summary>
+        /// The XML name of the <see cref="TokenProvider"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string TokenProviderPropertyName = "tokenProvider";
+        
+        /// <summary>
+        /// Gets or sets the TokenProvider.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The TokenProvider.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.TokenProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false, DefaultValue=false)]
+        public virtual bool TokenProvider
+        {
+            get
+            {
+                return ((bool)(base[global::Glipho.OAuth.Configuration.ServiceProvider.TokenProviderPropertyName]));
+            }
+            set
+            {
+                base[global::Glipho.OAuth.Configuration.ServiceProvider.TokenProviderPropertyName] = value;
+            }
+        }
+        #endregion
+        
         #region Endpoints Property
         /// <summary>
         /// The XML name of the <see cref="Endpoints"/> property.
@@ -122,6 +148,32 @@ namespace Glipho.OAuth.Configuration
             set
             {
                 base[global::Glipho.OAuth.Configuration.ServiceProvider.NoncesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region RoleProvider Property
+        /// <summary>
+        /// The XML name of the <see cref="RoleProvider"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string RoleProviderPropertyName = "roleProvider";
+        
+        /// <summary>
+        /// Gets or sets the RoleProvider.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The RoleProvider.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.RoleProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Configuration.RoleProvider RoleProvider
+        {
+            get
+            {
+                return ((global::Glipho.OAuth.Configuration.RoleProvider)(base[global::Glipho.OAuth.Configuration.ServiceProvider.RoleProviderPropertyName]));
+            }
+            set
+            {
+                base[global::Glipho.OAuth.Configuration.ServiceProvider.RoleProviderPropertyName] = value;
             }
         }
         #endregion
@@ -318,6 +370,51 @@ namespace Glipho.OAuth.Configuration
             set
             {
                 base[global::Glipho.OAuth.Configuration.Nonces.ClearingIntervalPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace Glipho.OAuth.Configuration
+{
+    
+    
+    /// <summary>
+    /// The RoleProvider Configuration Element.
+    /// </summary>
+    public partial class RoleProvider : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region EnableCustomRoleProvider Property
+        /// <summary>
+        /// The XML name of the <see cref="EnableCustomRoleProvider"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string EnableCustomRoleProviderPropertyName = "enableCustomRoleProvider";
+        
+        /// <summary>
+        /// Gets the EnableCustomRoleProvider.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The EnableCustomRoleProvider.")]
+        [global::System.ComponentModel.ReadOnlyAttribute(true)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false, DefaultValue=false)]
+        public virtual bool EnableCustomRoleProvider
+        {
+            get
+            {
+                return ((bool)(base[global::Glipho.OAuth.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName]));
             }
         }
         #endregion

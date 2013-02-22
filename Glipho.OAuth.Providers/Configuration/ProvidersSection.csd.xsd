@@ -26,7 +26,17 @@
 					<xs:documentation>The Nonces.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="roleProvider" type="tns:Glipho.OAuth.Configuration.RoleProviderCT">
+				<xs:annotation>
+					<xs:documentation>The RoleProvider.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:choice>
+		<xs:attribute name="tokenProvider" use="optional" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The TokenProvider.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="Glipho.OAuth.Configuration.EndpointCT">
 		<xs:attribute name="url" use="required" type="xs:string">
@@ -58,6 +68,13 @@
 		<xs:attribute name="clearingInterval" use="required" type="xs:time">
 			<xs:annotation>
 				<xs:documentation>The ClearingInterval.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Glipho.OAuth.Configuration.RoleProviderCT">
+		<xs:attribute name="enableCustomRoleProvider" use="optional" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The EnableCustomRoleProvider.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
