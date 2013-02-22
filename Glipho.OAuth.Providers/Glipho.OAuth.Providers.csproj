@@ -69,7 +69,6 @@
     <Compile Include="RequestToken.cs" />
     <Compile Include="OAuthServiceProvider.cs" />
     <Compile Include="TokenManager.cs" />
-    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Configuration\ProvidersSection.csd">

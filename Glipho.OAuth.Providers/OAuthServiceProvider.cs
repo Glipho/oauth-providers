@@ -1,26 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Glipho.OAuth.Providers
+﻿namespace Glipho.OAuth.Providers
 {
+    using System;
     using System.Web;
     using DotNetOpenAuth.Messaging;
     using DotNetOpenAuth.OAuth;
     using DotNetOpenAuth.OAuth.ChannelElements;
     using DotNetOpenAuth.OAuth.Messages;
 
+    /// <summary>
+    /// A service provider for web applications.
+    /// </summary>
     public class OAuthServiceProvider
     {
-        private const string PendingAuthorizationRequestSessionKey = "PendingAuthorizationRequest";
+        /// <summary>
+        /// Request session key for pending authorisations.
+        /// </summary>
+        private const string PendingAuthorisationRequestSessionKey = "PendingAuthorisationRequest";
+
+        /// <summary>
+        /// The lock to synchronize initialization of the <see cref="serviceProvider"/> field.
+        /// </summary>
+        private static readonly object InitializerLock = new object();
 
         /// <summary>
         /// The shared service description for this web site.
         /// </summary>
         private static ServiceProviderDescription serviceDescription;
 
+        /// <summary>
+        /// Reference to a token manager.
+        /// </summary>
         private static TokenManager tokenManager;
 
         /// <summary>
@@ -29,19 +38,35 @@ namespace Glipho.OAuth.Providers
         private static ServiceProvider serviceProvider;
 
         /// <summary>
-        /// The lock to synchronize initialization of the <see cref="serviceProvider"/> field.
+        /// The consumers database client.
         /// </summary>
-        private static readonly object InitializerLock = new object();
+        private readonly Database.IConsumers consumers;
+
+        /// <summary>
+        /// The issued tokens database client.
+        /// </summary>
+        private readonly Database.IIssuedTokens issuedTokens;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="OAuthServiceProvider"/> class.
+        /// </summary>
+        /// <param name="consumers">The consumers database client.</param>
+        /// <param name="issuedTokens">The issued tokens database client.</param>
+        public OAuthServiceProvider(Database.IConsumers consumers, Database.IIssuedTokens issuedTokens)
+        {
+            this.consumers = consumers;
+            this.issuedTokens = issuedTokens;
+        }
 
         /// <summary>
         /// Gets the service provider.
         /// </summary>
         /// <value>The service provider.</value>
-        public static ServiceProvider ServiceProvider
+        public ServiceProvider ServiceProvider
         {
             get
             {
-                EnsureInitialized();
+                this.EnsureInitialized();
                 return serviceProvider;
             }
         }
@@ -50,27 +75,34 @@ namespace Glipho.OAuth.Providers
         /// Gets the service description.
         /// </summary>
         /// <value>The service description.</value>
-        public static ServiceProviderDescription ServiceDescription
+        public ServiceProviderDescription ServiceDescription
         {
             get
             {
-                EnsureInitialized();
+                this.EnsureInitialized();
                 return serviceDescription;
             }
         }
 
-        public static UserAuthorizationRequest PendingAuthorizationRequest
+        /// <summary>
+        /// Gets or sets the pending authorisation request.
+        /// </summary>
+        public UserAuthorizationRequest PendingAuthorisationRequest
         {
             // HACK: This should probably be stored in a better way and might cause multi server issues.
-            get { return HttpContext.Current.Session[PendingAuthorizationRequestSessionKey] as UserAuthorizationRequest; }
-            set { HttpContext.Current.Session[PendingAuthorizationRequestSessionKey] = value; }
+            get { return HttpContext.Current.Session[PendingAuthorisationRequestSessionKey] as UserAuthorizationRequest; }
+            set { HttpContext.Current.Session[PendingAuthorisationRequestSessionKey] = value; }
         }
 
-        public static IConsumerDescription PendingAuthorizationConsumer
+        /// <summary>
+        /// Gets the pending authorization consumer.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Throw if the pending authorisation request does not have a value.</exception>
+        public IConsumerDescription PendingAuthorizationConsumer
         {
             get
             {
-                ITokenContainingMessage message = PendingAuthorizationRequest;
+                ITokenContainingMessage message = this.PendingAuthorisationRequest;
                 if (message == null)
                 {
                     throw new InvalidOperationException();
@@ -81,31 +113,41 @@ namespace Glipho.OAuth.Providers
             }
         }
 
-        public static void AuthorizePendingRequestToken(string username)
+        /// <summary>
+        /// Authorize the pending request token.
+        /// </summary>
+        /// <param name="username">The username to authorise with request token with.</param>
+        public void AuthorizePendingRequestToken(string username)
         {
-            var response = AuthorizePendingRequestTokenAndGetResponse(username);
+            var response = this.AuthorizePendingRequestTokenAndGetResponse(username);
             if (response != null)
             {
                 serviceProvider.Channel.Send(response);
             }
         }
 
-        public static OutgoingWebResponse AuthorizePendingRequestTokenAsWebResponse(string username)
+        /// <summary>
+        /// Authorize the pending request token as a web response.
+        /// </summary>
+        /// <param name="username">The username to authorise with request token with.</param>
+        /// <returns>
+        /// The <see cref="OutgoingWebResponse"/>.</returns>
+        public OutgoingWebResponse AuthorizePendingRequestTokenAsWebResponse(string username)
         {
-            var response = AuthorizePendingRequestTokenAndGetResponse(username);
-            if (response != null)
-            {
-                return serviceProvider.Channel.PrepareResponse(response);
-            }
-            else
-            {
-                return null;
-            }
+            var response = this.AuthorizePendingRequestTokenAndGetResponse(username);
+            return response != null ? serviceProvider.Channel.PrepareResponse(response) : null;
         }
 
-        private static UserAuthorizationResponse AuthorizePendingRequestTokenAndGetResponse(string username)
+        /// <summary>
+        /// Authorize the pending request token and get the response.
+        /// </summary>
+        /// <param name="username">The username to authorise with request token with.</param>
+        /// <returns>
+        /// The <see cref="UserAuthorizationResponse"/>.</returns>
+        /// <exception cref="InvalidOperationException">Throw if the pending authorisation request does not have a value.</exception>
+        private UserAuthorizationResponse AuthorizePendingRequestTokenAndGetResponse(string username)
         {
-            var pendingRequest = PendingAuthorizationRequest;
+            var pendingRequest = this.PendingAuthorisationRequest;
             if (pendingRequest == null)
             {
                 throw new InvalidOperationException("No pending authorization request to authorize.");
@@ -115,7 +157,7 @@ namespace Glipho.OAuth.Providers
             var token = tokenManager.GetRequestToken(message.Token);
             tokenManager.AuthoriseRequestToken(username, token);
 
-            PendingAuthorizationRequest = null;
+            this.PendingAuthorisationRequest = null;
             var response = serviceProvider.PrepareAuthorizationResponse(pendingRequest);
             return response;
         }
@@ -123,7 +165,7 @@ namespace Glipho.OAuth.Providers
         /// <summary>
         /// Initializes the <see cref="serviceProvider"/> field if it has not yet been initialized.
         /// </summary>
-        private static void EnsureInitialized()
+        private void EnsureInitialized()
         {
             if (serviceProvider != null)
             {
@@ -134,9 +176,10 @@ namespace Glipho.OAuth.Providers
             {
                 if (serviceDescription == null)
                 {
-                    var requestTokenUrl = new MessageReceivingEndpoint(new Uri(Utilities.ApplicationRoot, "OAuth/RequestToken"), HttpDeliveryMethods.PostRequest);
-                    var accessTokenUrl = new MessageReceivingEndpoint(new Uri(Utilities.ApplicationRoot, "OAuth/AccessToken"), HttpDeliveryMethods.GetRequest);
-                    var authorisationUrl = new MessageReceivingEndpoint(new Uri(Utilities.ApplicationRoot, "OAuth/Authenticate"), HttpDeliveryMethods.GetRequest);
+                    var providerConfig = new Configuration.ServiceProvider();
+                    var requestTokenUrl = new MessageReceivingEndpoint(new Uri(providerConfig.Endpoints.RequestToken.Url), HttpDeliveryMethods.PostRequest);
+                    var accessTokenUrl = new MessageReceivingEndpoint(new Uri(providerConfig.Endpoints.AccessToken.Url), HttpDeliveryMethods.GetRequest);
+                    var authorisationUrl = new MessageReceivingEndpoint(new Uri(providerConfig.Endpoints.UserAuthorisation.Url), HttpDeliveryMethods.GetRequest);
                     serviceDescription = new ServiceProviderDescription
                     {
                         TamperProtectionElements = new ITamperProtectionChannelBindingElement[] { new HmacSha1SigningBindingElement() },
@@ -148,8 +191,7 @@ namespace Glipho.OAuth.Providers
 
                 if (tokenManager == null)
                 {
-                    // TODO: Put this back in
-                    ////tokenManager = new TokenManager();
+                    tokenManager = new TokenManager(this.consumers, this.issuedTokens);
                 }
 
                 if (serviceProvider == null)
