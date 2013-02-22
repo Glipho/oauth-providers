@@ -1,11 +1,13 @@
 ﻿namespace Glipho.OAuth.Providers.Database
 {
     using System;
+    using System.Diagnostics;
     using System.Security.Cryptography.X509Certificates;
 
     /// <summary>
     /// The consumer.
     /// </summary>
+    [DebuggerDisplay("{ToString}")]
     public class Consumer
     {
         /// <summary>

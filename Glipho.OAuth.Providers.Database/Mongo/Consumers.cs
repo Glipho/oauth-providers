@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Driver;
-
-namespace Glipho.OAuth.Providers.Database.Mongo
+﻿namespace Glipho.OAuth.Providers.Database.Mongo
 {
+    using System;
     using MongoDB.Bson;
+    using MongoDB.Driver;
     using MongoDB.Driver.Builders;
 
     /// <summary>
@@ -21,14 +16,14 @@ namespace Glipho.OAuth.Providers.Database.Mongo
         internal const string ConsumersCollectionName = "consumers";
 
         /// <summary>
-        /// The consumers collection.
-        /// </summary>
-        private MongoCollection<Consumer> consumersCollection;
-
-        /// <summary>
         /// Indicated if the indexes used by this class have been created.
         /// </summary>
         private static bool indexesCreated;
+
+        /// <summary>
+        /// The consumers collection.
+        /// </summary>
+        private MongoCollection<Consumer> consumersCollection;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="Consumers"/> class.

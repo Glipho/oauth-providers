@@ -1,10 +1,12 @@
 ﻿namespace Glipho.OAuth.Providers.Database
 {
     using System;
+    using System.Diagnostics;
 
     /// <summary>
     /// The nonce.
     /// </summary>
+    [DebuggerDisplay("{ToString}")]
     public class Nonce
     {
         /// <summary>

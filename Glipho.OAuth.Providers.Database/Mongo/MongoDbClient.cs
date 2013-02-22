@@ -4,6 +4,9 @@
     using MongoDB.Bson;
     using MongoDB.Driver;
 
+    /// <summary>
+    /// Base class for any class accessing a MongoDB database.
+    /// </summary>
     public abstract class MongoDbClient
     {
         /// <summary>

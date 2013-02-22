@@ -1,6 +1,7 @@
 ﻿namespace Glipho.OAuth.Providers.Database.Mongo
 {
     using System;
+    using System.Diagnostics;
     using System.Security.Cryptography.X509Certificates;
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
@@ -8,6 +9,7 @@
     /// <summary>
     /// Mongo consumer representation.
     /// </summary>
+    [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
     public class Consumer
     {
         /// <summary>
