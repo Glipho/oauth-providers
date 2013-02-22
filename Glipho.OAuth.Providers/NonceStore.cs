@@ -14,20 +14,29 @@
         /// </summary>
         private const string NonceLock = "Nonce Clearance Lock";
 
+         /// <summary>
+        /// The nonce clearing interval.
+        /// </summary>
+        private static readonly TimeSpan NonceClearingInterval = new TimeSpan(0, 10, 00);
+
         /// <summary>
         /// The last nonce clearance time.
         /// </summary>
         private static DateTime lastNonceClearance;
 
-        /// <summary>
-        /// The nonce clearing interval.
-        /// </summary>
-        private readonly TimeSpan nonceClearingInterval = new TimeSpan(0, 10, 00);
-
-        /// <summary>
+       /// <summary>
         /// The nonces database client.
         /// </summary>
         private readonly Database.INonces nonces;
+
+        /// <summary>
+        /// Initialises static members of the <see cref="NonceDbStore"/> class.
+        /// </summary>
+        static NonceDbStore()
+        {
+            var configuration = new Configuration.ServiceProvider();
+            NonceClearingInterval = configuration.Nonces.ClearingInterval;
+        }
 
         /// <summary>
         /// Initialises a new instance of the <see cref="NonceDbStore"/> class.
@@ -69,7 +78,7 @@
             {
                 throw new ArgumentException("context does not have a value.", "context");
             }
-            
+
             if (string.IsNullOrWhiteSpace(nonce))
             {
                 throw new ArgumentException("nonce does not have a value.", "nonce");
@@ -93,14 +102,14 @@
         /// </summary>
         private void ClearNoncesIfAppropriate()
         {
-            if (DateTime.UtcNow <= lastNonceClearance + this.nonceClearingInterval)
+            if (DateTime.UtcNow <= lastNonceClearance + NonceClearingInterval)
             {
                 return;
             }
 
             lock (NonceLock)
             {
-                if (DateTime.UtcNow <= lastNonceClearance + this.nonceClearingInterval)
+                if (DateTime.UtcNow <= lastNonceClearance + NonceClearingInterval)
                 {
                     return;
                 }
