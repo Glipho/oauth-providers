@@ -1,6 +1,7 @@
 ﻿namespace Glipho.OAuth.Providers
 {
     using System;
+    using System.Collections.Generic;
     using DotNetOpenAuth.OAuth.ChannelElements;
 
     /// <summary>
@@ -39,6 +40,11 @@
         public string Username { get; private set; }
 
         /// <summary>
+        /// Gets the scope of the access token.
+        /// </summary>
+        public IEnumerable<string> Scope { get; private set; }
+
+        /// <summary>
         /// Create a new access token from a database access token.
         /// </summary>
         /// <param name="accessToken">The database access token to create a new access token from.</param>
@@ -58,6 +64,7 @@
                 {
                     "delegated"
                 },
+                Scope = accessToken.Scope,
                 Token = accessToken.Token,
                 Username = accessToken.Username,
             };
