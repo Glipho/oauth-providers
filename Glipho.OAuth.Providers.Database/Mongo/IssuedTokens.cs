@@ -1,6 +1,7 @@
 ﻿namespace Glipho.OAuth.Providers.Database.Mongo
 {
     using System;
+    using System.Linq;
     using MongoDB.Bson;
     using MongoDB.Driver;
     using MongoDB.Driver.Builders;
@@ -19,6 +20,11 @@
         /// Indicated if the indexes used by this class have been created.
         /// </summary>
         private static bool indexesCreated;
+
+        /// <summary>
+        /// The consumers collection.
+        /// </summary>
+        private MongoCollection<Consumer> consumersCollection;
 
         /// <summary>
         /// The tokens collection.
@@ -59,13 +65,13 @@
 
             try
             {
-                var mongoToken = IssuedToken.FromIssuedToken(issuedToken);
+                var mongoToken = IssuedToken.FromIssuedToken(issuedToken, this.GetConsumerStub(issuedToken.ConsumerKey));
                 this.tokensCollection.Insert(mongoToken, WriteConcern.WMajority);
                 return mongoToken.Id.ToInt32();
             }
             catch (MongoException ex)
             {
-                throw new OAuthException("Unable to add nonce to the database. A database error has occurred.", ex, ErrorCode.Database);
+                throw new OAuthException("Unable to token in the database. A database error has occurred.", ex, ErrorCode.Database);
             }
         }
 
@@ -117,13 +123,19 @@
         /// <summary>
         /// Update an existing token.
         /// </summary>
-        /// <param name="id">The identifier of the issued token to update.</param>
+        /// <param name="token">The token of the issued token to update.</param>
         /// <param name="updatedToken">Details to update the token with.</param>
         /// <returns>true if update was successful; else false.</returns>
+        /// <exception cref="ArgumentException">Thrown if a parameter is not valid.</exception>
         /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        public bool Update(int id, Database.IssuedToken updatedToken)
+        public bool Update(string token, Database.IssuedToken updatedToken)
         {
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                throw new ArgumentException("token does not have a value.", "token");
+            }
+
             if (updatedToken == null)
             {
                 throw new ArgumentNullException("updatedToken", "updatedToken is null");
@@ -131,16 +143,29 @@
 
             try
             {
-                var mongoToken = IssuedToken.FromIssuedToken(updatedToken);
-                var query = Query<IssuedToken>.EQ(t => t.Id, new BsonObjectId(id.ToString()));
+                var mongoToken = IssuedToken.FromIssuedToken(updatedToken, this.GetConsumerStub(updatedToken.ConsumerKey));
+                var query = Query<IssuedToken>.EQ(t => t.Token, token);
                 var sort = SortBy<IssuedToken>.Ascending(t => t.Id);
                 var result = this.tokensCollection.FindAndModify(query, sort, mongoToken.GetUpdateStatement(), true, false);
                 return result.Ok;
             }
             catch (MongoException ex)
             {
-                throw new OAuthException(string.Format("Unable to update token with ID of \"{0}\" in the database. A database error has occurred.", id), ex, ErrorCode.Database);
+                throw new OAuthException(string.Format("Unable to update token with token of \"{0}\" in the database. A database error has occurred.", token), ex, ErrorCode.Database);
             }
+        }
+
+        /// <summary>
+        /// Get a consumer stub.
+        /// </summary>
+        /// <param name="key">The key of the consumer.</param>
+        /// <returns>The <see cref="ConsumerStub"/>.</returns>
+        private ConsumerStub GetConsumerStub(string key)
+        {
+            var consumer = this.consumersCollection.FindAs<ConsumerStub>(Query<ConsumerStub>.EQ(c => c.Id, new BsonObjectId(key)));
+            consumer.SetFields(ConsumerStub.GetFields());
+            consumer.SetLimit(1);
+            return consumer.Single();
         }
 
         /// <summary>
@@ -149,6 +174,7 @@
         private void InitialiseClass()
         {
             this.tokensCollection = this.InitialiseCollection<IssuedToken>(TokensCollectionName);
+            this.consumersCollection = this.InitialiseCollection<Consumer>(Consumers.ConsumersCollectionName);
             this.EnsureIndexesExist();
         }
 
