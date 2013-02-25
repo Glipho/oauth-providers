@@ -1,88 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Glipho.OAuth.Providers.Database.Mongo
+﻿namespace Glipho.OAuth.Providers.Database.Mongo
 {
+    using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
+    using MongoDB.Driver;
+    using MongoDB.Driver.Builders;
 
+    /// <summary>
+    /// The request token.
+    /// </summary>
     [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
     public class RequestToken : IssuedToken
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="RequestToken"/> class.
+        /// </summary>
         public RequestToken()
         {
             this.Type = TokenType.RequestToken;
         }
 
-        public RequestToken(IServiceProviderRequestToken requestToken, IssuedToken existingToken)
-        {
-            this.Type = TokenType.RequestToken;
-            this.Callback = requestToken.Callback;
-            this.Consumer = existingToken.Consumer;
-            this.ConsumerVersion = requestToken.ConsumerVersion != null ? requestToken.ConsumerVersion.ToString() : null;
-            this.Created = existingToken.Created;
-            this.Id = existingToken.Id;
-            this.Scope = existingToken.Scope;
-            this.Token = requestToken.Token;
-            this.TokenSecret = existingToken.TokenSecret;
-            this.User = existingToken.User;
-            this.VerificationCode = requestToken.VerificationCode;
-        }
-
-        public RequestToken(IServiceProviderRequestToken requestToken, ConsumerStub consumer, User user)
-        {
-            this.Type = TokenType.RequestToken;
-            this.Callback = requestToken.Callback;
-            this.Consumer = consumer;
-            this.ConsumerVersion = requestToken.ConsumerVersion != null ? requestToken.ConsumerVersion.ToString() : null;
-            this.Token = requestToken.Token;
-            this.User = user;
-            this.VerificationCode = requestToken.VerificationCode;
-        }
-
-        public RequestToken(IssuedTokens.RequestToken requestToken, ConsumerStub consumer, User user)
-        {
-            this.Type = TokenType.RequestToken;
-            this.Callback = requestToken.Callback;
-            this.Consumer = consumer;
-            this.ConsumerVersion = requestToken.ConsumerVersion != null ? requestToken.ConsumerVersion.ToString() : null;
-            this.Created = requestToken.Created;
-            this.Scope = requestToken.Scope;
-            this.Token = requestToken.Token;
-            this.TokenSecret = requestToken.TokenSecret;
-            this.User = user;
-            this.VerificationCode = requestToken.VerificationCode;
-        }
-
+        /// <summary>
+        /// Gets or sets the callback.
+        /// </summary>
         [BsonIgnoreIfNull]
         public Uri Callback { get; set; }
 
+        /// <summary>
+        /// Gets or sets the consumer version.
+        /// </summary>
         [BsonIgnoreIfNull]
         [BsonIgnoreIfDefault]
         public string ConsumerVersion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the verification code.
+        /// </summary>
         [BsonRequired]
         public string VerificationCode { get; set; }
-
-        public IssuedTokens.RequestToken ToRequestToken()
-        {
-            return new IssuedTokens.RequestToken
-            {
-                Callback = this.Callback,
-                ConsumerKey = this.Consumer.Key,
-                ConsumerVersion = this.ConsumerVersion != null ? new Version(this.ConsumerVersion) : null,
-                Created = this.Created,
-                CreatedOn = this.Created.ToLocalTime(),
-                Scope = this.Scope,
-                Token = this.Token,
-                TokenSecret = this.TokenSecret,
-                VerificationCode = this.VerificationCode
-            };
-        }
 
         /// <summary>
         /// Create a new request token from a database request token.
@@ -116,6 +76,36 @@ namespace Glipho.OAuth.Providers.Database.Mongo
                 Username = requestToken.Username,
                 VerificationCode = requestToken.VerificationCode,
             };
+        }
+
+        /// <summary>
+        /// Convert this token into a database token.
+        /// </summary>
+        /// <returns>The database token created from this token.</returns>
+        internal override Database.IssuedToken ToToken()
+        {
+            return new Database.RequestToken
+            {
+                Authorised = !string.IsNullOrWhiteSpace(this.Username),
+                Callback = this.Callback,
+                ConsumerKey = this.Consumer.Id.ToString(),
+                ConsumerVersion = this.ConsumerVersion != null ? new Version(this.ConsumerVersion) : null,
+                Created = this.Created,
+                Id = this.Id.ToInt32(),
+                Scope = this.Scope,
+                Token = this.Token,
+                TokenSecret = this.TokenSecret,
+                VerificationCode = this.VerificationCode
+            };
+        }
+
+        /// <summary>
+        /// Get the update statement for the token.
+        /// </summary>
+        /// <returns><see cref="IMongoUpdate"/> containing the update statement.</returns>
+        internal override IMongoUpdate GetUpdateStatement()
+        {
+            return Update.Replace(this);
         }
     }
 }
