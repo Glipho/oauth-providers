@@ -1,9 +1,11 @@
 ﻿namespace Glipho.OAuth.Providers.Database.Mongo
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
+    using MongoDB.Driver;
 
     /// <summary>
     /// The base class for all issued tokens.
@@ -59,7 +61,7 @@
         /// Gets or sets the scope.
         /// </summary>
         [BsonIgnoreIfNull, BsonIgnoreIfDefault]
-        public string Scope { get; set; }
+        public IEnumerable<string> Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the token.
@@ -109,34 +111,64 @@
         /// <summary>
         /// Determines whether the specified <see cref="IssuedToken"/> is equal to the current <see cref="IssuedToken"/>.
         /// </summary>
-        /// <param name="nonce">The <see cref="IssuedToken"/> to compare with the current <see cref="IssuedToken"/>.</param>
+        /// <param name="token">The <see cref="IssuedToken"/> to compare with the current <see cref="IssuedToken"/>.</param>
         /// <returns>
         /// true if the specified <see cref="IssuedToken"/> is equal to the current <see cref="IssuedToken"/>; otherwise false.
         /// </returns>
-        public bool Equals(IssuedToken nonce)
+        public bool Equals(IssuedToken token)
         {
-            if (nonce == null)
+            if (token == null)
             {
                 return false;
             }
 
-            return this.Id == nonce.Id
-                && this.Username == nonce.Username
-                && this.Token == nonce.Token
-                && this.TokenSecret == nonce.TokenSecret
-                && this.Created == nonce.Created
-                && this.Scope == nonce.Scope
-                && this.Type == nonce.Type
-                && this.Consumer.Equals(nonce.Consumer);
+            return this.Id == token.Id
+                && this.Username == token.Username
+                && this.Token == token.Token
+                && this.TokenSecret == token.TokenSecret
+                && this.Created == token.Created
+                && (this.Scope != null && token.Scope != null && this.Scope.Equals(token.Scope))
+                && this.Type == token.Type
+                && this.Consumer.Equals(token.Consumer);
         }
 
-        internal static IssuedToken FromIssuedToken(Database.IssuedToken issuedToken)
+        /// <summary>
+        /// Create a new token from a database token.
+        /// </summary>
+        /// <param name="issuedToken">The database token to create a new token from.</param>
+        /// <param name="consumer">The consumer for the request token.</param>
+        /// <returns>A new token created from the database token.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
+        internal static IssuedToken FromIssuedToken(Database.IssuedToken issuedToken, ConsumerStub consumer)
         {
-            throw new NotImplementedException();
+            if (issuedToken == null)
+            {
+                throw new ArgumentNullException("issuedToken", "issuedToken is null");
+            }
+
+            if (issuedToken is Database.AccessToken)
+            {
+                return AccessToken.FromAccessToken(issuedToken as Database.AccessToken, consumer);
+            }
+
+            if (issuedToken is Database.RequestToken)
+            {
+                return RequestToken.FromAccessToken(issuedToken as Database.RequestToken, consumer);
+            }
+
+            throw new NotSupportedException(string.Format("Issued token of type \"{0}\" is not supported.", issuedToken.GetType()));
         }
 
+        /// <summary>
+        /// Convert this token into a database token.
+        /// </summary>
+        /// <returns>The database token created from this token.</returns>
         internal abstract Database.IssuedToken ToToken();
 
-        internal abstract MongoDB.Driver.IMongoUpdate GetUpdateStatement();
+        /// <summary>
+        /// Get the update statement for the token.
+        /// </summary>
+        /// <returns><see cref="IMongoUpdate"/> containing the update statement.</returns>
+        internal abstract IMongoUpdate GetUpdateStatement();
     }
 }
