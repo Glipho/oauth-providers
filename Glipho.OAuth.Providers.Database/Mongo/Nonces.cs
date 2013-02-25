@@ -58,7 +58,7 @@
 
             try
             {
-                var result = this.noncesCollection.Insert(nonce, WriteConcern.WMajority);
+                var result = this.noncesCollection.Insert(Nonce.FromNonce(nonce), WriteConcern.WMajority);
                 return result.Ok;
             }
             catch (MongoException ex)

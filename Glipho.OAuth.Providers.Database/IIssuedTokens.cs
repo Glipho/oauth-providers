@@ -36,12 +36,11 @@
         /// <summary>
         /// Update an existing token.
         /// </summary>
-        /// <param name="token">The token of the issued token to update.</param>
+        /// <param name="id">The identifier of the issued token to update.</param>
         /// <param name="updatedToken">Details to update the token with.</param>
         /// <returns>true if update was successful; else false.</returns>
-        /// <exception cref="ArgumentException">Thrown if a parameter is not valid.</exception>
         /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        bool Update(string token, IssuedToken updatedToken);
+        bool Update(int id, IssuedToken updatedToken);
     }
 }

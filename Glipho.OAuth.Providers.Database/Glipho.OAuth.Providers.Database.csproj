@@ -54,11 +54,17 @@
     <Compile Include="IIssuedTokens.cs" />
     <Compile Include="INonces.cs" />
     <Compile Include="IssuedToken.cs" />
+    <Compile Include="Mongo\AccessToken.cs" />
     <Compile Include="Mongo\Consumer.cs" />
     <Compile Include="Mongo\Consumers.cs" />
+    <Compile Include="Mongo\ConsumerStub.cs" />
+    <Compile Include="Mongo\IssuedToken.cs" />
+    <Compile Include="Mongo\IssuedTokens.cs" />
     <Compile Include="Mongo\MongoDbClient.cs" />
     <Compile Include="Mongo\Nonce.cs" />
     <Compile Include="Mongo\Nonces.cs" />
+    <Compile Include="Mongo\RequestToken.cs" />
+    <Compile Include="Mongo\TokenType.cs" />
     <Compile Include="Nonce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestToken.cs" />

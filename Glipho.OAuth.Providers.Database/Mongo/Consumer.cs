@@ -3,14 +3,13 @@
     using System;
     using System.Diagnostics;
     using System.Security.Cryptography.X509Certificates;
-    using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
 
     /// <summary>
     /// Mongo consumer representation.
     /// </summary>
     [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
-    public class Consumer
+    public class Consumer : ConsumerStub
     {
         /// <summary>
         /// Initialises a new instance of the <see cref="Consumer"/> class.
@@ -20,18 +19,6 @@
             this.Created = DateTime.UtcNow;
             this.LastModified = DateTime.UtcNow;
         }
-
-        /// <summary>
-        /// Gets or sets the id of the consumer.
-        /// </summary>
-        [BsonId]
-        public BsonObjectId Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        [BsonRequired]
-        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the callback.
