@@ -24,20 +24,19 @@
         /// <summary>
         /// Gets or sets the callback.
         /// </summary>
-        [BsonIgnoreIfNull]
+        [BsonElement("callback"), BsonIgnoreIfNull]
         public Uri Callback { get; set; }
 
         /// <summary>
         /// Gets or sets the consumer version.
         /// </summary>
-        [BsonIgnoreIfNull]
-        [BsonIgnoreIfDefault]
+        [BsonElement("version"), BsonIgnoreIfNull, BsonIgnoreIfDefault]
         public string ConsumerVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the verification code.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("code"), BsonRequired]
         public string VerificationCode { get; set; }
 
         /// <summary>

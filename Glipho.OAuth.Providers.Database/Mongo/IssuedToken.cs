@@ -30,43 +30,43 @@
         /// <summary>
         /// Gets or sets the consumer.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("consumer"), BsonRequired]
         public ConsumerStub Consumer { get; set; }
 
         /// <summary>
         /// Gets or sets the username.
         /// </summary>
-        [BsonIgnoreIfNull, BsonIgnoreIfDefault]
+        [BsonElement("username"), BsonIgnoreIfNull, BsonIgnoreIfDefault]
         public string Username { get; set; }
 
         /// <summary>
         /// Gets or sets the token.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("token"), BsonRequired]
         public string Token { get; set; }
 
         /// <summary>
         /// Gets or sets the token secret.
         /// </summary>
-        [BsonIgnoreIfNull, BsonIgnoreIfDefault]
+        [BsonElement("secret"), BsonIgnoreIfNull, BsonIgnoreIfDefault]
         public string TokenSecret { get; set; }
 
         /// <summary>
         /// Gets or sets the created date of the token.
         /// </summary>
-        [BsonRequired, BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        [BsonElement("created"), BsonRequired, BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the scope.
         /// </summary>
-        [BsonIgnoreIfNull, BsonIgnoreIfDefault]
+        [BsonElement("scope"), BsonIgnoreIfNull, BsonIgnoreIfDefault]
         public IEnumerable<string> Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the token.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("type"), BsonRequired]
         public TokenType Type { get; protected set; }
 
         /// <summary>

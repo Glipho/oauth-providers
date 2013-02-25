@@ -20,7 +20,7 @@
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("name"), BsonRequired]
         public string Name { get; set; }
 
         /// <summary>

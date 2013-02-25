@@ -20,25 +20,25 @@
         /// <summary>
         /// Gets or sets the context.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("context"), BsonRequired]
         public string Context { get; set; }
 
         /// <summary>
         /// Gets or sets the code.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("code"), BsonRequired]
         public string Code { get; set; }
 
         /// <summary>
         /// Gets or sets the issued date of the nonce.
         /// </summary>
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        [BsonElement("issued"), BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime Issued { get; set; }
 
         /// <summary>
         /// Gets or sets the expiry date of the nonce.
         /// </summary>
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        [BsonElement("expires"), BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime Expires { get; set; }
 
         /// <summary>

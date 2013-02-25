@@ -23,41 +23,43 @@
         /// <summary>
         /// Gets or sets the callback.
         /// </summary>
-        [BsonIgnoreIfNull]
+        [BsonElement("callback"), BsonIgnoreIfNull]
         public Uri Callback { get; set; }
 
         /// <summary>
         /// Gets or sets the secret.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("secret"), BsonRequired]
         public string Secret { get; set; }
 
         /// <summary>
         /// Gets or sets the verification code format.
         /// </summary>
-        [BsonRequired]
+        [BsonElement("code_format"), BsonRequired]
         public int VerificationCodeFormat { get; set; }
 
         /// <summary>
         /// Gets or sets the verification code length.
         /// </summary>
-        [BsonDefaultValue(10)]
+        [BsonElement("code_length"), BsonDefaultValue(10)]
         public int VerificationCodeLength { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate.
         /// </summary>
-        [BsonIgnoreIfNull]
+        [BsonElement("cert"), BsonIgnoreIfNull]
         public byte[] Certificate { get; set; }
 
         /// <summary>
         /// Gets or sets the created.
         /// </summary>
+        [BsonElement("created")]
         public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or sets the last modified.
         /// </summary>
+        [BsonElement("modified")]
         public DateTime LastModified { get; set; }
 
         /// <summary>
