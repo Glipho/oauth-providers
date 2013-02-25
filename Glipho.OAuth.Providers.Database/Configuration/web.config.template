@@ -1,0 +1,5 @@
+﻿<configuration>
+  <connectionStrings>
+    <add name="Glipho.OAuth.Providers.Database.ConnectionString" connectionString="MONGO_DATABASE_CONNECTION_STRING" />
+  </connectionStrings>
+</configuration>

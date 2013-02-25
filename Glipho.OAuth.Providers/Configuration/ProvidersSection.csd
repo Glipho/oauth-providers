@@ -20,7 +20,7 @@
         </configurationSectionProperty>
       </configurationSectionProperties>
     </configurationSectionGroup>
-    <configurationSection name="ServiceProvider" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="serviceProvider">
+    <configurationSection name="ServiceProvider" codeGenOptions="None" xmlSectionName="serviceProvider">
       <attributeProperties>
         <attributeProperty name="TokenProvider" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="tokenProvider" isReadOnly="false" defaultValue="false">
           <type>

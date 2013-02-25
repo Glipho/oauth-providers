@@ -20,7 +20,7 @@
       <nestedChildShapes>
         <elementListCompartment Id="9714468a-85c7-4951-8066-b672b92c7eac" absoluteBounds="4.39, 4.785, 1.5950000000000002, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
         <elementListCompartment Id="dcb6e4b3-eb3c-47d4-a835-56e00cb53da8" absoluteBounds="4.39, 5.2366910807291669, 1.5950000000000002, 0.8262939453125" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
-        <elementPropertyHasTypeConnector edgePoints="[(5.21875 : 6.16298502604167); (5.21875 : 6.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="817738b5-f315-4a74-9d4f-6ec5e726ddef">
+        <elementPropertyHasTypeConnector edgePoints="[(5.1875 : 6.16298502604167); (5.1875 : 6.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="817738b5-f315-4a74-9d4f-6ec5e726ddef">
           <relativeChildShapes />
           <nodes>
             <configurationSectionShapeMoniker Id="b66a01a1-23c8-4372-8875-758b403b22c9" />

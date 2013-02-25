@@ -18,51 +18,6 @@ namespace Glipho.OAuth.Configuration
     public partial class ServiceProvider : global::System.Configuration.ConfigurationSection
     {
         
-        #region Singleton Instance
-        /// <summary>
-        /// The XML name of the ServiceProvider Configuration Section.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        internal const string ServiceProviderSectionName = "serviceProvider";
-        
-        /// <summary>
-        /// Gets the ServiceProvider instance.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public static global::Glipho.OAuth.Configuration.ServiceProvider Instance
-        {
-            get
-            {
-                return ((global::Glipho.OAuth.Configuration.ServiceProvider)(global::System.Configuration.ConfigurationManager.GetSection(global::Glipho.OAuth.Configuration.ServiceProvider.ServiceProviderSectionName)));
-            }
-        }
-        #endregion
-        
-        #region Xmlns Property
-        /// <summary>
-        /// The XML name of the <see cref="Xmlns"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        internal const string XmlnsPropertyName = "xmlns";
-        
-        /// <summary>
-        /// Gets the XML namespace of this Configuration Section.
-        /// </summary>
-        /// <remarks>
-        /// This property makes sure that if the configuration file contains the XML namespace,
-        /// the parser doesn't throw an exception because it encounters the unknown "xmlns" attribute.
-        /// </remarks>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.XmlnsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public string Xmlns
-        {
-            get
-            {
-                return ((string)(base[global::Glipho.OAuth.Configuration.ServiceProvider.XmlnsPropertyName]));
-            }
-        }
-        #endregion
-        
         #region IsReadOnly override
         /// <summary>
         /// Gets a value indicating whether the element is read-only.
