@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>
+    <copyright>Copyright Glipho Ltd 2013</copyright>
+    <tags>Glipho OAuth OAuth1 Provider MongoDB</tags>
+    <dependencies>
+      <dependency id="Glipho.OAuth.Core" version="[0.0.0,1.0.0)" />
+      <dependency id="mongocsharpdriver" version="[1.7.1,1.8.0)" />
+    </dependencies>
+  </metadata>
+</package>

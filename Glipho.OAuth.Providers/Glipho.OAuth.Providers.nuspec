@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>
+    <copyright>Copyright Glipho Ltd 2013</copyright>
+    <tags>Glipho OAuth OAuth1 Provider</tags>
+    <dependencies>
+      <dependency id="Glipho.OAuth.Core" version="[0.0.0,1.0.0)" />
+      <dependency id="Glipho.OAuth.Providers.Database" version="[0.0.0,1.0.0)" />
+      <dependency id="DotNetOpenAuth.Core" version="[4.2.2.13055,5.0.0]" />
+      <dependency id="DotNetOpenAuth.OAuth.Common" version="[4.2.2.13055,5.0.0)" />
+      <dependency id="DotNetOpenAuth.OAuth.Core" version="[4.2.2.13055,5.0.0)" />
+      <dependency id="DotNetOpenAuth.OAuth.ServiceProvider" version="[4.2.2.13055,5.0.0)" />
+      <dependency id="Microsoft.AspNet.Mvc" version="[4.0.20710,5.0.0)" />
+      <dependency id="Microsoft.AspNet.Razor" version="[2.0.20715,3.0.0)" />
+      <dependency id="Microsoft.AspNet.WebApi.Client" version="[4.0.20710,5.0.0)" />
+      <dependency id="Microsoft.AspNet.WebApi.Core" version="[4.0.20710,5.0.0)" />
+      <dependency id="Microsoft.AspNet.WebPages" version="[2.0.20710,3.0.0)" />
+      <dependency id="Microsoft.Net.Http" version="[2.0.20710,3.0.0)" />
+      <dependency id="Microsoft.Web.Infrastructure" version="[1.0.0,2.0.0)" />
+      <dependency id="Newtonsoft.Json" version="[4.5.11,5.0.0)" />
+    </dependencies>
+  </metadata>
+</package>
