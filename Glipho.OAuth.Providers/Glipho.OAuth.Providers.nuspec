@@ -26,4 +26,7 @@
       <dependency id="Newtonsoft.Json" version="[4.5.11,5.0.0)" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="Glipho.OAuth.Providers\Configuration\web.config.transform" target="content" />
+  </files>
 </package>

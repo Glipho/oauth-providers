@@ -1,0 +1,35 @@
+﻿<configuration>
+  <configSections>
+    <sectionGroup name="glipho.oAuth" type="System.Configuration.ConfigurationSectionGroup, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <section name="serviceProvider" type="Glipho.OAuth.Configuration.ServiceProvider, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+    </sectionGroup>
+  </configSections>
+  <glipho.oAuth xmlns="urn:Glipho.OAuth.Configuration">
+    <serviceProvider>
+      <endpoints>
+        <accessToken url="ACCESS_TOKEN_URL_HERE" />
+        <requestToken url="REQUEST_TOKEN_URL_HERE" />
+        <userAuthorisation url="USER_AUTHORISATION_URL_HERE" />
+      </endpoints>
+      <nonces clearingInterval="00:10:00" />
+      <roleProvider enableCustomRoleProvider="false" />
+    </serviceProvider>
+  </glipho.oAuth>
+  <dotNetOpenAuth>
+    <oauth>
+      <serviceProvider>
+        <store type="Glipho.OAuth.Providers.NonceDbStore, Glipho.OAuth.Providers" />
+      </serviceProvider>
+    </oauth>
+  </dotNetOpenAuth>
+  <system.web>
+    <httpModules>
+      <add name="OAuthAuthenticationModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
+    </httpModules>
+  </system.web>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true">
+      <add name="OAuthAuthenticationModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
+    </modules>
+  </system.webServer>
+</configuration>

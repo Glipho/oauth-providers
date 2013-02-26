@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glipho.OAuth.Providers.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glipho.OAuth.Providers.Ninject", "Glipho.OAuth.Providers.Ninject\Glipho.OAuth.Providers.Ninject.csproj", "{DCC3AFFC-0004-494C-9EEB-8C2875455730}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC85F628-9924-41D4-AD00-1D3E61A5FAD9}"
+	ProjectSection(SolutionItems) = preProject
+		Deployment Readme.md = Deployment Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

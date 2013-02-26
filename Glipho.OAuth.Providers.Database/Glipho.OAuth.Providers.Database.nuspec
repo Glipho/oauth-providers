@@ -14,4 +14,7 @@
       <dependency id="mongocsharpdriver" version="[1.7.1,1.8.0)" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="Glipho.OAuth.Providers.Database\Configuration\web.config.transform" target="content" />
+  </files>
 </package>
