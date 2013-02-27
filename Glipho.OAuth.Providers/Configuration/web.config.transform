@@ -15,21 +15,14 @@
       <roleProvider enableCustomRoleProvider="false" />
     </serviceProvider>
   </glipho.oAuth>
-  <dotNetOpenAuth>
-    <oauth>
-      <serviceProvider>
-        <store type="Glipho.OAuth.Providers.NonceDbStore, Glipho.OAuth.Providers" />
-      </serviceProvider>
-    </oauth>
-  </dotNetOpenAuth>
   <system.web>
     <httpModules>
-      <add name="OAuthAuthenticationModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
+      <add name="AuthenticationHttpModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
     </httpModules>
   </system.web>
   <system.webServer>
     <modules runAllManagedModulesForAllRequests="true">
-      <add name="OAuthAuthenticationModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
+      <add name="AuthenticationHttpModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
     </modules>
   </system.webServer>
 </configuration>
