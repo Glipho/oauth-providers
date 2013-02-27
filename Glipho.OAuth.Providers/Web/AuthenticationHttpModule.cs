@@ -34,7 +34,7 @@
         /// <param name="issuedTokens">The issued tokens database client.</param>
         public AuthenticationHttpModule(Database.IConsumers consumers, Database.IIssuedTokens issuedTokens)
         {
-            this.serviceProviderConfiguration = new Configuration.ServiceProvider();
+            this.serviceProviderConfiguration = Configuration.OAuthSectionGroup.ServiceProvider;
             this.serviceProvider = new OAuthServiceProvider(consumers, issuedTokens);
         }
 
@@ -92,9 +92,9 @@
 
             var endpoints = new[]
             {
-                new Uri(Configuration.Endpoints.AccessTokenPropertyName), 
-                new Uri(Configuration.Endpoints.RequestTokenPropertyName), 
-                new Uri(Configuration.Endpoints.UserAuthorisationPropertyName)
+                new Uri(this.serviceProviderConfiguration.Endpoints.AccessToken.Url), 
+                new Uri(this.serviceProviderConfiguration.Endpoints.RequestToken.Url), 
+                new Uri(this.serviceProviderConfiguration.Endpoints.UserAuthorisation.Url)
             };
 
             return endpoints.Any(u => string.Equals(this.application.Context.Request.Url.AbsolutePath, u.AbsolutePath, StringComparison.OrdinalIgnoreCase));

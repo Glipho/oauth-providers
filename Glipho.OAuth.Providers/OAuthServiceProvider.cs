@@ -176,7 +176,7 @@
             {
                 if (serviceDescription == null)
                 {
-                    var providerConfig = new Configuration.ServiceProvider();
+                    var providerConfig = Configuration.OAuthSectionGroup.ServiceProvider;
                     var requestTokenUrl = new MessageReceivingEndpoint(new Uri(providerConfig.Endpoints.RequestToken.Url), HttpDeliveryMethods.PostRequest);
                     var accessTokenUrl = new MessageReceivingEndpoint(new Uri(providerConfig.Endpoints.AccessToken.Url), HttpDeliveryMethods.GetRequest);
                     var authorisationUrl = new MessageReceivingEndpoint(new Uri(providerConfig.Endpoints.UserAuthorisation.Url), HttpDeliveryMethods.GetRequest);

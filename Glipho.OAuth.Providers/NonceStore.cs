@@ -34,7 +34,7 @@
         /// </summary>
         static NonceDbStore()
         {
-            var configuration = new Configuration.ServiceProvider();
+            var configuration = Configuration.OAuthSectionGroup.ServiceProvider;
             NonceClearingInterval = configuration.Nonces.ClearingInterval;
         }
 

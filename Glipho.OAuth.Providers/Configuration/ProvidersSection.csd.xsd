@@ -8,25 +8,25 @@
 </auto-generated>
 -->
 <xs:schema xmlns:tns="urn:Glipho.OAuth.Configuration" elementFormDefault="qualified" targetNamespace="urn:Glipho.OAuth.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="glipho.oAuth" type="tns:Glipho.OAuth.Configuration.glipho.oAuthCT" />
-	<xs:complexType name="Glipho.OAuth.Configuration.glipho.oAuthCT">
+	<xs:element name="glipho.oAuth" type="tns:Glipho.OAuth.Providers.Configuration.glipho.oAuthCT" />
+	<xs:complexType name="Glipho.OAuth.Providers.Configuration.glipho.oAuthCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element minOccurs="0" maxOccurs="1" name="serviceProvider" type="tns:Glipho.OAuth.Configuration.ServiceProviderCT" />
+			<xs:element minOccurs="0" maxOccurs="1" name="serviceProvider" type="tns:Glipho.OAuth.Providers.Configuration.ServiceProviderCT" />
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="Glipho.OAuth.Configuration.ServiceProviderCT">
+	<xs:complexType name="Glipho.OAuth.Providers.Configuration.ServiceProviderCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element minOccurs="1" name="endpoints" type="tns:Glipho.OAuth.Configuration.EndpointsCT">
+			<xs:element minOccurs="1" name="endpoints" type="tns:Glipho.OAuth.Providers.Configuration.EndpointsCT">
 				<xs:annotation>
 					<xs:documentation>The Endpoints.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="1" name="nonces" type="tns:Glipho.OAuth.Configuration.NoncesCT">
+			<xs:element minOccurs="1" name="nonces" type="tns:Glipho.OAuth.Providers.Configuration.NoncesCT">
 				<xs:annotation>
 					<xs:documentation>The Nonces.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="roleProvider" type="tns:Glipho.OAuth.Configuration.RoleProviderCT">
+			<xs:element minOccurs="0" name="roleProvider" type="tns:Glipho.OAuth.Providers.Configuration.RoleProviderCT">
 				<xs:annotation>
 					<xs:documentation>The RoleProvider.</xs:documentation>
 				</xs:annotation>
@@ -38,40 +38,40 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType name="Glipho.OAuth.Configuration.EndpointCT">
+	<xs:complexType name="Glipho.OAuth.Providers.Configuration.EndpointCT">
 		<xs:attribute name="url" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Url.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType name="Glipho.OAuth.Configuration.EndpointsCT">
+	<xs:complexType name="Glipho.OAuth.Providers.Configuration.EndpointsCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element minOccurs="1" name="accessToken" type="tns:Glipho.OAuth.Configuration.EndpointCT">
+			<xs:element minOccurs="1" name="accessToken" type="tns:Glipho.OAuth.Providers.Configuration.EndpointCT">
 				<xs:annotation>
 					<xs:documentation>The AccessToken.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="1" name="requestToken" type="tns:Glipho.OAuth.Configuration.EndpointCT">
+			<xs:element minOccurs="1" name="requestToken" type="tns:Glipho.OAuth.Providers.Configuration.EndpointCT">
 				<xs:annotation>
 					<xs:documentation>The RequestToken.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="1" name="userAuthorisation" type="tns:Glipho.OAuth.Configuration.EndpointCT">
+			<xs:element minOccurs="1" name="userAuthorisation" type="tns:Glipho.OAuth.Providers.Configuration.EndpointCT">
 				<xs:annotation>
 					<xs:documentation>The UserAuthorisation.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="Glipho.OAuth.Configuration.NoncesCT">
+	<xs:complexType name="Glipho.OAuth.Providers.Configuration.NoncesCT">
 		<xs:attribute name="clearingInterval" use="required" type="xs:time">
 			<xs:annotation>
 				<xs:documentation>The ClearingInterval.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType name="Glipho.OAuth.Configuration.RoleProviderCT">
+	<xs:complexType name="Glipho.OAuth.Providers.Configuration.RoleProviderCT">
 		<xs:attribute name="enableCustomRoleProvider" use="optional" type="xs:boolean">
 			<xs:annotation>
 				<xs:documentation>The EnableCustomRoleProvider.</xs:documentation>

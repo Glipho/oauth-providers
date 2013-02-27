@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<configurationSectionModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d" namespace="Glipho.OAuth.Configuration" xmlSchemaNamespace="urn:Glipho.OAuth.Configuration" xmlns="http://schemas.microsoft.com/dsltools/ConfigurationSectionDesigner">
+<configurationSectionModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d" namespace="Glipho.OAuth.Providers.Configuration" xmlSchemaNamespace="urn:Glipho.OAuth.Configuration" xmlns="http://schemas.microsoft.com/dsltools/ConfigurationSectionDesigner">
   <typeDefinitions>
     <externalType name="String" namespace="System" />
     <externalType name="Boolean" namespace="System" />

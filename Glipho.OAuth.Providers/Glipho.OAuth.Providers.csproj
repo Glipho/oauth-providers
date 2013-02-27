@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessToken.cs" />
+    <Compile Include="Configuration\OAuthSectionGroup.cs" />
     <Compile Include="Configuration\ProvidersSection.csd.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

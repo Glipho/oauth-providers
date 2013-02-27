@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Glipho.OAuth.Configuration
+namespace Glipho.OAuth.Providers.Configuration
 {
     
     
@@ -41,16 +41,16 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The TokenProvider.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.TokenProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false, DefaultValue=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.ServiceProvider.TokenProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false, DefaultValue=false)]
         public virtual bool TokenProvider
         {
             get
             {
-                return ((bool)(base[global::Glipho.OAuth.Configuration.ServiceProvider.TokenProviderPropertyName]));
+                return ((bool)(base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.TokenProviderPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.ServiceProvider.TokenProviderPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.TokenProviderPropertyName] = value;
             }
         }
         #endregion
@@ -67,16 +67,16 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Endpoints.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.EndpointsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Glipho.OAuth.Configuration.Endpoints Endpoints
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.ServiceProvider.EndpointsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.Endpoints Endpoints
         {
             get
             {
-                return ((global::Glipho.OAuth.Configuration.Endpoints)(base[global::Glipho.OAuth.Configuration.ServiceProvider.EndpointsPropertyName]));
+                return ((global::Glipho.OAuth.Providers.Configuration.Endpoints)(base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.EndpointsPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.ServiceProvider.EndpointsPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.EndpointsPropertyName] = value;
             }
         }
         #endregion
@@ -93,16 +93,16 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Nonces.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.NoncesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Glipho.OAuth.Configuration.Nonces Nonces
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.ServiceProvider.NoncesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.Nonces Nonces
         {
             get
             {
-                return ((global::Glipho.OAuth.Configuration.Nonces)(base[global::Glipho.OAuth.Configuration.ServiceProvider.NoncesPropertyName]));
+                return ((global::Glipho.OAuth.Providers.Configuration.Nonces)(base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.NoncesPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.ServiceProvider.NoncesPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.NoncesPropertyName] = value;
             }
         }
         #endregion
@@ -119,22 +119,22 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The RoleProvider.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.ServiceProvider.RoleProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Glipho.OAuth.Configuration.RoleProvider RoleProvider
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.ServiceProvider.RoleProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.RoleProvider RoleProvider
         {
             get
             {
-                return ((global::Glipho.OAuth.Configuration.RoleProvider)(base[global::Glipho.OAuth.Configuration.ServiceProvider.RoleProviderPropertyName]));
+                return ((global::Glipho.OAuth.Providers.Configuration.RoleProvider)(base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.RoleProviderPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.ServiceProvider.RoleProviderPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.RoleProviderPropertyName] = value;
             }
         }
         #endregion
     }
 }
-namespace Glipho.OAuth.Configuration
+namespace Glipho.OAuth.Providers.Configuration
 {
     
     
@@ -167,22 +167,22 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Url.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.Endpoint.UrlPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.Endpoint.UrlPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
         public virtual string Url
         {
             get
             {
-                return ((string)(base[global::Glipho.OAuth.Configuration.Endpoint.UrlPropertyName]));
+                return ((string)(base[global::Glipho.OAuth.Providers.Configuration.Endpoint.UrlPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.Endpoint.UrlPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.Endpoint.UrlPropertyName] = value;
             }
         }
         #endregion
     }
 }
-namespace Glipho.OAuth.Configuration
+namespace Glipho.OAuth.Providers.Configuration
 {
     
     
@@ -215,16 +215,16 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The AccessToken.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.Endpoints.AccessTokenPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Glipho.OAuth.Configuration.Endpoint AccessToken
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.Endpoints.AccessTokenPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.Endpoint AccessToken
         {
             get
             {
-                return ((global::Glipho.OAuth.Configuration.Endpoint)(base[global::Glipho.OAuth.Configuration.Endpoints.AccessTokenPropertyName]));
+                return ((global::Glipho.OAuth.Providers.Configuration.Endpoint)(base[global::Glipho.OAuth.Providers.Configuration.Endpoints.AccessTokenPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.Endpoints.AccessTokenPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.Endpoints.AccessTokenPropertyName] = value;
             }
         }
         #endregion
@@ -241,16 +241,16 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The RequestToken.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.Endpoints.RequestTokenPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Glipho.OAuth.Configuration.Endpoint RequestToken
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.Endpoints.RequestTokenPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.Endpoint RequestToken
         {
             get
             {
-                return ((global::Glipho.OAuth.Configuration.Endpoint)(base[global::Glipho.OAuth.Configuration.Endpoints.RequestTokenPropertyName]));
+                return ((global::Glipho.OAuth.Providers.Configuration.Endpoint)(base[global::Glipho.OAuth.Providers.Configuration.Endpoints.RequestTokenPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.Endpoints.RequestTokenPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.Endpoints.RequestTokenPropertyName] = value;
             }
         }
         #endregion
@@ -267,22 +267,22 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The UserAuthorisation.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.Endpoints.UserAuthorisationPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public virtual global::Glipho.OAuth.Configuration.Endpoint UserAuthorisation
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.Endpoints.UserAuthorisationPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.Endpoint UserAuthorisation
         {
             get
             {
-                return ((global::Glipho.OAuth.Configuration.Endpoint)(base[global::Glipho.OAuth.Configuration.Endpoints.UserAuthorisationPropertyName]));
+                return ((global::Glipho.OAuth.Providers.Configuration.Endpoint)(base[global::Glipho.OAuth.Providers.Configuration.Endpoints.UserAuthorisationPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.Endpoints.UserAuthorisationPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.Endpoints.UserAuthorisationPropertyName] = value;
             }
         }
         #endregion
     }
 }
-namespace Glipho.OAuth.Configuration
+namespace Glipho.OAuth.Providers.Configuration
 {
     
     
@@ -315,22 +315,22 @@ namespace Glipho.OAuth.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The ClearingInterval.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.Nonces.ClearingIntervalPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false, DefaultValue="00:10:00")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.Nonces.ClearingIntervalPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false, DefaultValue="00:10:00")]
         public virtual global::System.TimeSpan ClearingInterval
         {
             get
             {
-                return ((global::System.TimeSpan)(base[global::Glipho.OAuth.Configuration.Nonces.ClearingIntervalPropertyName]));
+                return ((global::System.TimeSpan)(base[global::Glipho.OAuth.Providers.Configuration.Nonces.ClearingIntervalPropertyName]));
             }
             set
             {
-                base[global::Glipho.OAuth.Configuration.Nonces.ClearingIntervalPropertyName] = value;
+                base[global::Glipho.OAuth.Providers.Configuration.Nonces.ClearingIntervalPropertyName] = value;
             }
         }
         #endregion
     }
 }
-namespace Glipho.OAuth.Configuration
+namespace Glipho.OAuth.Providers.Configuration
 {
     
     
@@ -364,12 +364,12 @@ namespace Glipho.OAuth.Configuration
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The EnableCustomRoleProvider.")]
         [global::System.ComponentModel.ReadOnlyAttribute(true)]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false, DefaultValue=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false, DefaultValue=false)]
         public virtual bool EnableCustomRoleProvider
         {
             get
             {
-                return ((bool)(base[global::Glipho.OAuth.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName]));
+                return ((bool)(base[global::Glipho.OAuth.Providers.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName]));
             }
         }
         #endregion
