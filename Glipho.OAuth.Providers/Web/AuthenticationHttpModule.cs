@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Web;
+    using System.Web.Mvc;
     using System.Web.Security;
     using DotNetOpenAuth.OAuth.ChannelElements;
     using DotNetOpenAuth.OAuth.Messages;
@@ -30,12 +31,13 @@
         /// <summary>
         /// Initialises a new instance of the <see cref="AuthenticationHttpModule"/> class.
         /// </summary>
-        /// <param name="consumers">The consumers database client.</param>
-        /// <param name="issuedTokens">The issued tokens database client.</param>
-        public AuthenticationHttpModule(Database.IConsumers consumers, Database.IIssuedTokens issuedTokens)
+        public AuthenticationHttpModule()
         {
+            var consumers = DependencyResolver.Current.GetService<Database.IConsumers>();
+            var issuedTokens = DependencyResolver.Current.GetService<Database.IIssuedTokens>();
+            var nonces = DependencyResolver.Current.GetService<Database.INonces>();
             this.serviceProviderConfiguration = Configuration.OAuthSectionGroup.ServiceProvider;
-            this.serviceProvider = new OAuthServiceProvider(consumers, issuedTokens);
+            this.serviceProvider = new OAuthServiceProvider(consumers, issuedTokens, nonces);
         }
 
         /// <summary>

@@ -23,7 +23,8 @@
         {
             var consumers = DependencyResolver.Current.GetService<Database.IConsumers>();
             var issuedTokens = DependencyResolver.Current.GetService<Database.IIssuedTokens>();
-            this.serviceProvider = new OAuthServiceProvider(consumers, issuedTokens);
+            var nonces = DependencyResolver.Current.GetService<Database.INonces>();
+            this.serviceProvider = new OAuthServiceProvider(consumers, issuedTokens, nonces);
         }
 
         /// <summary>

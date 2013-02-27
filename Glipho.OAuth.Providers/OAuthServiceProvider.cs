@@ -38,6 +38,11 @@
         private static ServiceProvider serviceProvider;
 
         /// <summary>
+        /// The shared nonce db store.
+        /// </summary>
+        private static NonceDbStore nonceDbStore;
+
+        /// <summary>
         /// The consumers database client.
         /// </summary>
         private readonly Database.IConsumers consumers;
@@ -48,14 +53,21 @@
         private readonly Database.IIssuedTokens issuedTokens;
 
         /// <summary>
+        /// The nonces database client.
+        /// </summary>
+        private readonly Database.INonces nonces;
+
+        /// <summary>
         /// Initialises a new instance of the <see cref="OAuthServiceProvider"/> class.
         /// </summary>
         /// <param name="consumers">The consumers database client.</param>
         /// <param name="issuedTokens">The issued tokens database client.</param>
-        public OAuthServiceProvider(Database.IConsumers consumers, Database.IIssuedTokens issuedTokens)
+        /// <param name="nonces">The nonces database client.</param>
+        public OAuthServiceProvider(Database.IConsumers consumers, Database.IIssuedTokens issuedTokens, Database.INonces nonces)
         {
             this.consumers = consumers;
             this.issuedTokens = issuedTokens;
+            this.nonces = nonces;
         }
 
         /// <summary>
@@ -194,9 +206,14 @@
                     tokenManager = new TokenManager(this.consumers, this.issuedTokens);
                 }
 
+                if (nonceDbStore == null)
+                {
+                    nonceDbStore = new NonceDbStore(this.nonces);
+                }
+
                 if (serviceProvider == null)
                 {
-                    serviceProvider = new ServiceProvider(serviceDescription, tokenManager);
+                    serviceProvider = new ServiceProvider(serviceDescription, tokenManager, nonceDbStore);
                 }
             }
         }
