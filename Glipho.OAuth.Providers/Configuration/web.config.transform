@@ -5,7 +5,7 @@
     </sectionGroup>
   </configSections>
   <glipho.oAuth xmlns="urn:Glipho.OAuth.Configuration">
-    <serviceProvider>
+    <serviceProvider tokenProvider="false">
       <endpoints>
         <accessToken url="ACCESS_TOKEN_URL_HERE" />
         <requestToken url="REQUEST_TOKEN_URL_HERE" />
