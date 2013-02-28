@@ -34,7 +34,7 @@
         /// <summary>
         /// Gets or sets the identifier of the Nonce.
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the context.

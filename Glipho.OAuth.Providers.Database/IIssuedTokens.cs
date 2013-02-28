@@ -31,7 +31,7 @@
         /// <param name="id">The identifier of the token to remove.</param>
         /// <returns>true if removal was successful; else false.</returns>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        bool Remove(int id);
+        bool Remove(string id);
 
         /// <summary>
         /// Update an existing token.

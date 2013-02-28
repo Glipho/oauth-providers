@@ -87,7 +87,7 @@
                 ConsumerKey = this.ConsumerKey,
                 ConsumerVersion = this.ConsumerVersion,
                 Created = this.CreatedOn.ToUniversalTime(),
-                Id = 0,
+                Id = null,
                 Scope = null,
                 Token = this.Token,
                 TokenSecret = null,

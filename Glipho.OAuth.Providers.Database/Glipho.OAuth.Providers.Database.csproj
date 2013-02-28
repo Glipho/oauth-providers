@@ -76,7 +76,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configuration\web.config.template" />
+    <None Include="Configuration\web.config.transform" />
     <None Include="Glipho.OAuth.Providers.Database.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

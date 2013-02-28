@@ -117,7 +117,7 @@
                 Code = nonce.Code,
                 Context = nonce.Context,
                 Expires = nonce.Expires.ToUniversalTime(),
-                Id = new BsonObjectId(nonce.Id.ToString()),
+                Id = new BsonObjectId(nonce.Id),
                 Issued = nonce.Issued.ToUniversalTime(),
             };
         }

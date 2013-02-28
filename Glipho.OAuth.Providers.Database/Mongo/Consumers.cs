@@ -46,20 +46,20 @@
         /// <summary>
         /// Retrieve a consumer from the database.
         /// </summary>
-        /// <param name="key">The key of the consumer to retrieve.</param>
+        /// <param name="id">The identifier of the consumer to retrieve.</param>
         /// <returns>The <see cref="Database.Consumer"/> if found; else null.</returns>
         /// <exception cref="ArgumentException">Thrown if a parameter is not valid.</exception>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        public Database.Consumer Get(string key)
+        public Database.Consumer Get(string id)
         {
-            if (string.IsNullOrWhiteSpace(key))
+            if (string.IsNullOrWhiteSpace(id))
             {
-                throw new ArgumentException("key does not have a value.", "key");
+                throw new ArgumentException("key does not have a value.", "id");
             }
 
             try
             {
-                var consumer = this.consumersCollection.FindOne(Query<Consumer>.EQ(c => c.Id, new BsonObjectId(key)));
+                var consumer = this.consumersCollection.FindOne(Query<Consumer>.EQ(c => c.Id, new BsonObjectId(id)));
                 return consumer.ToConsumer();
             }
             catch (MongoException ex)

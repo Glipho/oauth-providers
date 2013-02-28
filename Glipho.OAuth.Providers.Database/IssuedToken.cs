@@ -21,7 +21,7 @@
         /// <summary>
         /// Gets or sets the identifier of the token.
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the consumer key.

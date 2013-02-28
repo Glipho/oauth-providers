@@ -44,7 +44,7 @@
             {
                 Consumer = consumer,
                 Created = accessToken.Created,
-                Id = new BsonObjectId(accessToken.Id.ToString()),
+                Id = new BsonObjectId(accessToken.Id),
                 Scope = accessToken.Scope,
                 Token = accessToken.Token,
                 TokenSecret = accessToken.TokenSecret,
@@ -62,7 +62,7 @@
             {
                 ConsumerKey = this.Consumer.Id.ToString(),
                 Created = this.Created,
-                Id = this.Id.ToInt32(),
+                Id = this.Id.ToString(),
                 Scope = this.Scope,
                 Token = this.Token,
                 TokenSecret = this.TokenSecret,

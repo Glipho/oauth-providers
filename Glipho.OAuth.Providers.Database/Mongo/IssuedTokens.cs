@@ -106,11 +106,11 @@
         /// <param name="id">The identifier of the token to remove.</param>
         /// <returns>true if removal was successful; else false.</returns>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        public bool Remove(int id)
+        public bool Remove(string id)
         {
             try
             {
-                var query = Query<IssuedToken>.LT(t => t.Id, new BsonObjectId(id.ToString()));
+                var query = Query<IssuedToken>.LT(t => t.Id, new BsonObjectId(id));
                 var result = this.tokensCollection.Remove(query, RemoveFlags.Single, WriteConcern.WMajority);
                 return result.Ok;
             }
