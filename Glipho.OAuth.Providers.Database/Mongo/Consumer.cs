@@ -3,6 +3,7 @@
     using System;
     using System.Diagnostics;
     using System.Security.Cryptography.X509Certificates;
+    using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
 
     /// <summary>
@@ -120,6 +121,31 @@
                 && this.VerificationCodeFormat == consumer.VerificationCodeFormat
                 && this.VerificationCodeLength == consumer.VerificationCodeLength
                 && this.Certificate == consumer.Certificate;
+        }
+
+        /// <summary>
+        /// Create a new consumer from a database consumer.
+        /// </summary>
+        /// <param name="consumer">The database consumer to create a new consumer from.</param>
+        /// <returns>A new consumer created from the database consumer.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
+        internal static Consumer FromConsumer(Database.Consumer consumer)
+        {
+            if (consumer == null)
+            {
+                throw new ArgumentNullException("consumer", "consumer is null");
+            }
+
+            return new Consumer
+            {
+                Callback = consumer.Callback,
+                Certificate = consumer.Certificate != null ? consumer.Certificate.RawData : null,
+                Id = consumer.Id != null ? new BsonObjectId(consumer.Id) : null,
+                Name = consumer.Name,
+                Secret = consumer.Secret,
+                VerificationCodeFormat = consumer.VerificationCodeFormat,
+                VerificationCodeLength = consumer.VerificationCodeLength,
+            };
         }
 
         /// <summary>

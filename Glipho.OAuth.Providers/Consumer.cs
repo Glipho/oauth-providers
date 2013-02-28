@@ -73,7 +73,7 @@
         /// <param name="consumer">The database consumer to create a new consumer from.</param>
         /// <returns>A new consumer created from the database consumer.</returns>
         /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
-        internal static IConsumerDescription FromDataConsumer(Database.Consumer consumer)
+        internal static Consumer FromDataConsumer(Database.Consumer consumer)
         {
             if (consumer == null)
             {
