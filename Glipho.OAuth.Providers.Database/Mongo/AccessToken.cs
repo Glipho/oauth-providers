@@ -44,7 +44,7 @@
             {
                 Consumer = consumer,
                 Created = accessToken.Created,
-                Id = new BsonObjectId(accessToken.Id),
+                Id = accessToken.Id != null ? new BsonObjectId(accessToken.Id) : null,
                 Scope = accessToken.Scope,
                 Token = accessToken.Token,
                 TokenSecret = accessToken.TokenSecret,
@@ -76,7 +76,7 @@
         /// <returns><see cref="IMongoUpdate"/> containing the update statement.</returns>
         internal override IMongoUpdate GetUpdateStatement()
         {
-            return Update.Replace(this);
+            return Update.Replace(this.ToBsonDocument<IssuedToken>());
         }
     }
 }

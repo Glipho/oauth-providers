@@ -64,7 +64,7 @@
                 Consumer = consumer,
                 Created = requestToken.Created,
                 ConsumerVersion = requestToken.ConsumerVersion != null ? requestToken.ConsumerVersion.ToString() : null,
-                Id = new BsonObjectId(requestToken.Id),
+                Id = requestToken.Id != null ? new BsonObjectId(requestToken.Id) : null,
                 Scope = requestToken.Scope,
                 Token = requestToken.Token,
                 TokenSecret = requestToken.TokenSecret,
@@ -90,6 +90,7 @@
                 Scope = this.Scope,
                 Token = this.Token,
                 TokenSecret = this.TokenSecret,
+                Username = this.Username,
                 VerificationCode = this.VerificationCode
             };
         }
@@ -100,7 +101,7 @@
         /// <returns><see cref="IMongoUpdate"/> containing the update statement.</returns>
         internal override IMongoUpdate GetUpdateStatement()
         {
-            return Update.Replace(this);
+            return Update.Replace(this.ToBsonDocument<IssuedToken>());
         }
     }
 }

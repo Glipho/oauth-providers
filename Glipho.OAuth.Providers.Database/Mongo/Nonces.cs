@@ -115,6 +115,9 @@
                 var uniqueNonceIndex = IndexKeys<Nonce>.Ascending(n => n.Context).Ascending(n => n.Code).Ascending(n => n.Issued);
                 var indexOptions = IndexOptions.SetBackground(true).SetUnique(true);
                 this.noncesCollection.EnsureIndex(uniqueNonceIndex, indexOptions);
+
+                var expiryDateIndex = IndexKeys<Nonce>.Ascending(n => n.Expires);
+                this.noncesCollection.EnsureIndex(expiryDateIndex, IndexOptions.SetBackground(true));
                 indexesCreated = true;
             }
         }

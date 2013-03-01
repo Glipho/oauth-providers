@@ -92,7 +92,7 @@
             try
             {
                 var foundToken = this.tokensCollection.FindOne(Query<IssuedToken>.EQ(t => t.Token, token));
-                return foundToken.ToToken();
+                return foundToken != null ? foundToken.ToToken() : null;
             }
             catch (MongoException ex)
             {
@@ -146,6 +146,8 @@
                 var mongoToken = IssuedToken.FromIssuedToken(updatedToken, this.GetConsumerStub(updatedToken.ConsumerKey));
                 var query = Query<IssuedToken>.EQ(t => t.Token, token);
                 var sort = SortBy<IssuedToken>.Ascending(t => t.Id);
+                var existingToken = this.tokensCollection.FindOne(query);
+                mongoToken.Id = existingToken.Id;
                 var result = this.tokensCollection.FindAndModify(query, sort, mongoToken.GetUpdateStatement(), true, false);
                 return result.Ok;
             }

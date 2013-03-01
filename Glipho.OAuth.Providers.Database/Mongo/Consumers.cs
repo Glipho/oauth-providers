@@ -88,7 +88,7 @@
             try
             {
                 var consumer = this.consumersCollection.FindOne(Query<Consumer>.EQ(c => c.Id, new BsonObjectId(id)));
-                return consumer.ToConsumer();
+                return consumer != null ? consumer.ToConsumer() : null;
             }
             catch (MongoException ex)
             {
