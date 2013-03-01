@@ -7,7 +7,7 @@
     /// <summary>
     /// The consumer.
     /// </summary>
-    [DebuggerDisplay("{ToString}")]
+    [DebuggerDisplay("{ToString()}")]
     public class Consumer
     {
         /// <summary>

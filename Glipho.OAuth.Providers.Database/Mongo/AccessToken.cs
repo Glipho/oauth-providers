@@ -10,7 +10,7 @@
     /// <summary>
     /// The access token.
     /// </summary>
-    [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
+    [DebuggerDisplay("{ToString()}"), BsonIgnoreExtraElements]
     public class AccessToken : IssuedToken
     {
         /// <summary>

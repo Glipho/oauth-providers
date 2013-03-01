@@ -8,7 +8,7 @@
     /// <summary>
     /// Mongo consumer representation.
     /// </summary>
-    [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
+    [DebuggerDisplay("{ToString()}"), BsonIgnoreExtraElements]
     public class ConsumerStub
     {
         /// <summary>

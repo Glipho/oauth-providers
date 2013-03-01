@@ -10,7 +10,7 @@
     /// <summary>
     /// The base class for all issued tokens.
     /// </summary>
-    [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements, BsonKnownTypes(typeof(AccessToken), typeof(RequestToken))]
+    [DebuggerDisplay("{ToString()}"), BsonIgnoreExtraElements, BsonKnownTypes(typeof(AccessToken), typeof(RequestToken))]
     public abstract class IssuedToken
     {
         /// <summary>

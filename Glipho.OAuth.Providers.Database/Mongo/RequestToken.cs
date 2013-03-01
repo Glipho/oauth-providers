@@ -10,7 +10,7 @@
     /// <summary>
     /// The request token.
     /// </summary>
-    [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
+    [DebuggerDisplay("{ToString()}"), BsonIgnoreExtraElements]
     public class RequestToken : IssuedToken
     {
         /// <summary>

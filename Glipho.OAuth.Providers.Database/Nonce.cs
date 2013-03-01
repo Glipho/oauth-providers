@@ -6,7 +6,7 @@
     /// <summary>
     /// The nonce.
     /// </summary>
-    [DebuggerDisplay("{ToString}")]
+    [DebuggerDisplay("{ToString()}")]
     public class Nonce
     {
         /// <summary>

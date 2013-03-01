@@ -8,7 +8,7 @@
     /// <summary>
     /// Mongo nonce representation.
     /// </summary>
-    [DebuggerDisplay("{ToString}"), BsonIgnoreExtraElements]
+    [DebuggerDisplay("{ToString()}"), BsonIgnoreExtraElements]
     public class Nonce
     {
         /// <summary>
