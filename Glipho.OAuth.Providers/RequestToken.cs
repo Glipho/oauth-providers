@@ -73,26 +73,5 @@
                 VerificationCode = requestToken.VerificationCode,
             };
         }
-
-        /// <summary>
-        /// Convert this request token into a database request token.
-        /// </summary>
-        /// <returns>The database request token created from this request token.</returns>
-        internal Database.RequestToken ToDataRequestToken()
-        {
-            return new Database.RequestToken
-            {
-                Authorised = false,
-                Callback = this.Callback,
-                ConsumerKey = this.ConsumerKey,
-                ConsumerVersion = this.ConsumerVersion,
-                Created = this.CreatedOn.ToUniversalTime(),
-                Id = null,
-                Scope = null,
-                Token = this.Token,
-                TokenSecret = null,
-                Username = null,
-            };
-        }
     }
 }

@@ -5,6 +5,7 @@
     using System.Linq;
     using DotNetOpenAuth.OAuth.ChannelElements;
     using DotNetOpenAuth.OAuth.Messages;
+    using Glipho.OAuth.Providers.Extensions;
 
     /// <summary>
     /// Implementation of the <see cref="IServiceProviderTokenManager"/> interface from DotNetOpenAuth.
@@ -160,14 +161,13 @@
                 throw new ArgumentNullException("token", "token is null");
             }
 
-            var requestToken = token as RequestToken;
-            if (requestToken == null)
+            var existing = this.issuedTokens.Get(token.Token) as Database.RequestToken;
+            if (existing == null)
             {
                 throw new InvalidOperationException(string.Format("token is of type \"{0}\" and not of expected type RequestToken.", token.GetType()));
             }
 
-            var dataToken = requestToken.ToDataRequestToken();
-            this.issuedTokens.Update(token.Token, dataToken);
+            this.issuedTokens.Update(token.Token, token.ToDataRequestToken(existing));
         }
 
         /// <summary>

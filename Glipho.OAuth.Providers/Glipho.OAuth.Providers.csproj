@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Consumer.cs" />
     <Compile Include="Consumers.cs" />
+    <Compile Include="Extensions\ServiceProviderRequestTokenExtensions.cs" />
     <Compile Include="IConsumers.cs" />
     <Compile Include="NonceStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
