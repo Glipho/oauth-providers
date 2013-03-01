@@ -56,7 +56,7 @@
         /// <returns>Identifier of the newly created token.</returns>
         /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        public int Create(Database.IssuedToken issuedToken)
+        public string Create(Database.IssuedToken issuedToken)
         {
             if (issuedToken == null)
             {
@@ -67,7 +67,7 @@
             {
                 var mongoToken = IssuedToken.FromIssuedToken(issuedToken, this.GetConsumerStub(issuedToken.ConsumerKey));
                 this.tokensCollection.Insert(mongoToken, WriteConcern.WMajority);
-                return mongoToken.Id.ToInt32();
+                return mongoToken.Id.ToString();
             }
             catch (MongoException ex)
             {

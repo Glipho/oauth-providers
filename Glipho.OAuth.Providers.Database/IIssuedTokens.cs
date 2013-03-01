@@ -14,7 +14,7 @@
         /// <returns>Identifier of the newly created token.</returns>
         /// <exception cref="ArgumentNullException">Thrown if a parameter is null.</exception>
         /// <exception cref="Glipho.OAuth.OAuthException">Thrown if an error occurs while executing the requested command.</exception>
-        int Create(IssuedToken issuedToken);
+        string Create(IssuedToken issuedToken);
 
         /// <summary>
         /// Retrieve a consumer from the database.
