@@ -158,6 +158,7 @@
             {
                 Callback = this.Callback,
                 Certificate = this.Certificate != null ? new X509Certificate2(this.Certificate) : null,
+                Id = this.Id.ToString(),
                 Name = this.Name,
                 Secret = this.Secret,
                 VerificationCodeFormat = this.VerificationCodeFormat,
