@@ -9,9 +9,11 @@
     <description>$description$</description>
     <copyright>Copyright Glipho Ltd 2013</copyright>
     <tags>Glipho OAuth OAuth1 Provider</tags>
+    <licenseUrl>https://github.com/Glipho/oauth-providers/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Glipho/oauth-providers</projectUrl>
     <dependencies>
-      <dependency id="Glipho.OAuth.Core" version="[0.0.0,1.0.0)" />
-      <dependency id="Glipho.OAuth.Providers.Database" version="[0.0.0,1.0.0)" />
+      <dependency id="Glipho.OAuth.Core" version="[0.1.0,0.2.0)" />
+      <dependency id="Glipho.OAuth.Providers.Database" version="[0.1.0,0.2.0)" />
       <dependency id="DotNetOpenAuth.Core" version="[4.2.2.13055,5.0.0]" />
       <dependency id="DotNetOpenAuth.OAuth.Common" version="[4.2.2.13055,5.0.0)" />
       <dependency id="DotNetOpenAuth.OAuth.Core" version="[4.2.2.13055,5.0.0)" />

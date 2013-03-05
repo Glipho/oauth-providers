@@ -9,9 +9,11 @@
     <description>$description$</description>
     <copyright>Copyright Glipho Ltd 2013</copyright>
     <tags>Glipho OAuth OAuth1 Provider Ninject</tags>
+    <licenseUrl>https://github.com/Glipho/oauth-providers/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Glipho/oauth-providers</projectUrl>
     <dependencies>
-      <dependency id="Glipho.OAuth.Providers" version="[0.0.0,1.0.0)" />
-      <dependency id="Glipho.OAuth.Providers.Database" version="[0.0.0,1.0.0)" />
+      <dependency id="Glipho.OAuth.Providers" version="[0.1.0,0.2.0)" />
+      <dependency id="Glipho.OAuth.Providers.Database" version="[0.1.0,0.2.0)" />
       <dependency id="Ninject" version="[3.0.1.10,4.0.0)" />
     </dependencies>
   </metadata>

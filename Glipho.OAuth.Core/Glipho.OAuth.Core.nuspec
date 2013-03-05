@@ -9,5 +9,7 @@
     <description>$description$</description>
     <copyright>Copyright Glipho Ltd 2013</copyright>
     <tags>Glipho OAuth</tags>
+    <licenseUrl>https://github.com/Glipho/oauth-providers/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Glipho/oauth-providers</projectUrl>
   </metadata>
 </package>

@@ -1,7 +1,7 @@
 ﻿<configuration>
   <configSections>
     <sectionGroup name="glipho.oAuth" type="System.Configuration.ConfigurationSectionGroup, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <section name="serviceProvider" type="Glipho.OAuth.Providers.Configuration.ServiceProvider, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+      <section name="serviceProvider" type="Glipho.OAuth.Providers.Configuration.ServiceProvider, Glipho.OAuth.Providers, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null"/>
     </sectionGroup>
   </configSections>
   <glipho.oAuth xmlns="urn:Glipho.OAuth.Configuration">
@@ -17,12 +17,12 @@
   </glipho.oAuth>
   <system.web>
     <httpModules>
-      <add name="AuthenticationHttpModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
+      <add name="AuthenticationHttpModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.1.0.0, Culture=neutral" />
     </httpModules>
   </system.web>
   <system.webServer>
     <modules runAllManagedModulesForAllRequests="true">
-      <add name="AuthenticationHttpModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.0.0.0, Culture=neutral" />
+      <add name="AuthenticationHttpModule" type="Glipho.OAuth.Providers.Web.AuthenticationHttpModule, Glipho.OAuth.Providers, Version=0.1.0.0, Culture=neutral" />
     </modules>
   </system.webServer>
 </configuration>
