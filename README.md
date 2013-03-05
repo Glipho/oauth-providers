@@ -23,7 +23,7 @@ We welcome, and actively encourage, contributions. If you wish to contribute fol
 
 ## Authors
 **James Toyer**
-- [http://glipho.com/jamestoyer](http://glipho.com/james)
+- [http://glipho.com/james](http://glipho.com/james)
 - [http://github.com/jamestoyer](http://github.com/jamestoyer)
 
 ## Copyright and Licence
