@@ -1,6 +1,7 @@
 ﻿namespace Glipho.OAuth.Providers.Web
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
@@ -92,12 +93,20 @@
                 return false;
             }
 
-            var endpoints = new[]
+            var endpoints = new List<Uri>
             {
                 new Uri(this.serviceProviderConfiguration.Endpoints.AccessToken.Url), 
                 new Uri(this.serviceProviderConfiguration.Endpoints.RequestToken.Url), 
                 new Uri(this.serviceProviderConfiguration.Endpoints.UserAuthorisation.Url)
             };
+
+            if (this.serviceProviderConfiguration.ExemptUrls != null && this.serviceProviderConfiguration.ExemptUrls.Count > 0)
+            {
+                for (var i = 0; i < this.serviceProviderConfiguration.ExemptUrls.Count; i++)
+                {
+                    endpoints.Add(new Uri(this.serviceProviderConfiguration.ExemptUrls[i].Url));
+                }
+            }
 
             return endpoints.Any(u => string.Equals(this.application.Context.Request.Url.AbsolutePath, u.AbsolutePath, StringComparison.OrdinalIgnoreCase));
         }

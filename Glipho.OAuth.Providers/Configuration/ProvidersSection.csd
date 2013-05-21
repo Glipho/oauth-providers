@@ -44,6 +44,11 @@
             <configurationElementMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/RoleProvider" />
           </type>
         </elementProperty>
+        <elementProperty name="ExemptUrls" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="exemptUrls" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/ExemptUrls" />
+          </type>
+        </elementProperty>
       </elementProperties>
     </configurationSection>
     <configurationElement name="Endpoint">
@@ -88,6 +93,20 @@
         <attributeProperty name="EnableCustomRoleProvider" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="enableCustomRoleProvider" isReadOnly="true" defaultValue="false">
           <type>
             <externalTypeMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/Boolean" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="ExemptUrls" collectionType="AddRemoveClearMap" xmlItemName="exemptUrl" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/ExemptUrl" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="ExemptUrl">
+      <attributeProperties>
+        <attributeProperty name="Url" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="url" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/c1d9cc96-e196-4f9e-aa15-1c495fd4ab6d/String" />
           </type>
         </attributeProperty>
       </attributeProperties>

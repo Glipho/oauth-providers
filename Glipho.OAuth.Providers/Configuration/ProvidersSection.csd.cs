@@ -132,6 +132,32 @@ namespace Glipho.OAuth.Providers.Configuration
             }
         }
         #endregion
+        
+        #region ExemptUrls Property
+        /// <summary>
+        /// The XML name of the <see cref="ExemptUrls"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ExemptUrlsPropertyName = "exemptUrls";
+        
+        /// <summary>
+        /// Gets or sets the ExemptUrls.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ExemptUrls.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.ServiceProvider.ExemptUrlsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::Glipho.OAuth.Providers.Configuration.ExemptUrls ExemptUrls
+        {
+            get
+            {
+                return ((global::Glipho.OAuth.Providers.Configuration.ExemptUrls)(base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.ExemptUrlsPropertyName]));
+            }
+            set
+            {
+                base[global::Glipho.OAuth.Providers.Configuration.ServiceProvider.ExemptUrlsPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace Glipho.OAuth.Providers.Configuration
@@ -370,6 +396,224 @@ namespace Glipho.OAuth.Providers.Configuration
             get
             {
                 return ((bool)(base[global::Glipho.OAuth.Providers.Configuration.RoleProvider.EnableCustomRoleProviderPropertyName]));
+            }
+        }
+        #endregion
+    }
+}
+namespace Glipho.OAuth.Providers.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of ExemptUrl instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::Glipho.OAuth.Providers.Configuration.ExemptUrl), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.AddRemoveClearMap, AddItemName="add", RemoveItemName="remove", ClearItemsName="clear")]
+    public partial class ExemptUrls : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ExemptUrlPropertyName = "exemptUrl";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.AddRemoveClearMap;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::Glipho.OAuth.Providers.Configuration.ExemptUrls.ExemptUrlPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::Glipho.OAuth.Providers.Configuration.ExemptUrls.ExemptUrlPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::Glipho.OAuth.Providers.Configuration.ExemptUrl)(element)).Url;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::Glipho.OAuth.Providers.Configuration.ExemptUrl();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Glipho.OAuth.Providers.Configuration.ExemptUrl this[int index]
+        {
+            get
+            {
+                return ((global::Glipho.OAuth.Providers.Configuration.ExemptUrl)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> with the specified key.
+        /// </summary>
+        /// <param name="url">The key of the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Glipho.OAuth.Providers.Configuration.ExemptUrl this[object url]
+        {
+            get
+            {
+                return ((global::Glipho.OAuth.Providers.Configuration.ExemptUrl)(base.BaseGet(url)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="exemptUrl">The <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public void Add(global::Glipho.OAuth.Providers.Configuration.ExemptUrl exemptUrl)
+        {
+            base.BaseAdd(exemptUrl);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="exemptUrl">The <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public void Remove(global::Glipho.OAuth.Providers.Configuration.ExemptUrl exemptUrl)
+        {
+            base.BaseRemove(this.GetElementKey(exemptUrl));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Glipho.OAuth.Providers.Configuration.ExemptUrl GetItemAt(int index)
+        {
+            return ((global::Glipho.OAuth.Providers.Configuration.ExemptUrl)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> with the specified key.
+        /// </summary>
+        /// <param name="url">The key of the <see cref="global::Glipho.OAuth.Providers.Configuration.ExemptUrl"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::Glipho.OAuth.Providers.Configuration.ExemptUrl GetItemByKey(string url)
+        {
+            return ((global::Glipho.OAuth.Providers.Configuration.ExemptUrl)(base.BaseGet(((object)(url)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace Glipho.OAuth.Providers.Configuration
+{
+    
+    
+    /// <summary>
+    /// The ExemptUrl Configuration Element.
+    /// </summary>
+    public partial class ExemptUrl : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Url Property
+        /// <summary>
+        /// The XML name of the <see cref="Url"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string UrlPropertyName = "url";
+        
+        /// <summary>
+        /// Gets or sets the Url.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Url.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::Glipho.OAuth.Providers.Configuration.ExemptUrl.UrlPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public virtual string Url
+        {
+            get
+            {
+                return ((string)(base[global::Glipho.OAuth.Providers.Configuration.ExemptUrl.UrlPropertyName]));
+            }
+            set
+            {
+                base[global::Glipho.OAuth.Providers.Configuration.ExemptUrl.UrlPropertyName] = value;
             }
         }
         #endregion
