@@ -7,6 +7,7 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <description>$description$</description>
+    <releaseNotes>Added ability to allow abitrary URLs to be exempt from OAuth processing.</releaseNotes>
     <copyright>Copyright Glipho Ltd 2013</copyright>
     <tags>Glipho OAuth OAuth1 Provider</tags>
     <licenseUrl>https://github.com/Glipho/oauth-providers/blob/master/LICENSE.md</licenseUrl>
