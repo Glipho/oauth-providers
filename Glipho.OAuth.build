@@ -48,7 +48,7 @@
         <property name="oauthProvidersDatabaseVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}-dev-${buildNumber}" />
         <property name="oauthProvidersNinjectVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}-dev-${buildNumber}" />
         <call target="create-packages" />
-        <call target="deploy-dev-packages" />
+        <call target="push-dev-packages" />
     </target>
     <target name="create-packages">
         <exec program="${nuget}">
@@ -96,7 +96,7 @@
             <arg value="Configuration=${config}" />
         </exec>
     </target>
-    <target name="deploy-dev-packages">
+    <target name="push-dev-packages">
         <exec program="${nuget}">
             <arg value="push" />
             <arg value="${oauthObjDirectory}\${oauthName}.${oauthVersion}.nupkg" />
