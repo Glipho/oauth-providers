@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<project name="OAuth-Providers" default="build" basedir=".">
+    <description>Glipho OAuth Providers build file.</description>
+    <property name="nuget" value=".nuget\nuget.exe" />
+
+    <property name="config" value="Release" />
+
+    <property name="oauthName" value="Glipho.OAuth.Core"/>
+    <property name="oauthDirectory" value="${oauthName}" />
+    <property name="oauthObjDirectory" value="${oauthDirectory}\obj\${config}" />
+    <property name="oauthProjectName" value="${oauthDirectory}\${oauthName}.csproj" />
+
+    <property name="oauthProvidersName" value="Glipho.OAuth.Providers"/>
+    <property name="oauthProvidersDirectory" value="${oauthProvidersName}" />
+    <property name="oauthProvidersObjDirectory" value="${oauthProvidersDirectory}\obj\${config}" />
+    <property name="oauthProvidersProjectName" value="${oauthProvidersDirectory}\${oauthProvidersName}.csproj" />
+
+    <property name="oauthProvidersDatabaseName" value="Glipho.OAuth.Providers.Database"/>
+    <property name="oauthProvidersDatabaseDirectory" value="${oauthProvidersDatabaseName}" />
+    <property name="oauthProvidersDatabaseObjDirectory" value="${oauthProvidersDatabaseDirectory}\obj\${config}" />
+    <property name="oauthProvidersDatabaseProjectName" value="${oauthProvidersDatabaseDirectory}\${oauthProvidersDatabaseName}.csproj" />
+
+    <property name="oauthProvidersNinjectName" value="Glipho.OAuth.Providers.Ninject"/>
+    <property name="oauthProvidersNinjectDirectory" value="${oauthProvidersNinjectName}" />
+    <property name="oauthProvidersNinjectObjDirectory" value="${oauthProvidersNinjectDirectory}\obj\${config}" />
+    <property name="oauthProvidersNinjectProjectName" value="${oauthProvidersNinjectDirectory}\${oauthProvidersNinjectName}.csproj" />
+
+    <property name="oauthBinDirectory" value="${oauthDirectory}\bin\${config}" />
+    <property name="oauthAssemblyName" value="${oauthBinDirectory}\${oauthName}.dll" />
+    <property name="oauthProvidersBinDirectory" value="${oauthProvidersDirectory}\bin\${config}" />
+    <property name="oauthProvidersAssemblyName" value="${oauthProvidersBinDirectory}\${oauthProvidersName}.dll" />
+    <property name="oauthProvidersDatabaseBinDirectory" value="${oauthProvidersDatabaseDirectory}\bin\${config}" />
+    <property name="oauthProvidersDatabaseAssemblyName" value="${oauthProvidersDatabaseBinDirectory}\${oauthProvidersDatabaseName}.dll" />
+    <property name="oauthProvidersNinjectBinDirectory" value="${oauthProvidersNinjectDirectory}\bin\${config}" />
+    <property name="oauthProvidersNinjectAssemblyName" value="${oauthProvidersNinjectBinDirectory}\${oauthProvidersNinjectName}.dll" />
+
+    <target name="deploy-release-packages">
+        <property name="oauthVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthAssemblyName)))}.${buildNumber}" />
+        <property name="oauthProvidersVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersAssemblyName)))}.${buildNumber}" />
+        <property name="oauthProvidersDatabaseVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${buildNumber}" />
+        <property name="oauthProvidersNinjectVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${buildNumber}" />
+        <call target="create-packages" />
+        <call target="deploy-packages" />
+    </target>
+    <target name="deploy-dev-packages">
+        <property name="oauthVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthAssemblyName)))}-dev-${buildNumber}" />
+        <property name="oauthProvidersVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersAssemblyName)))}-dev-${buildNumber}" />
+        <property name="oauthProvidersDatabaseVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersDatabaseAssemblyName)))}-dev-${buildNumber}" />
+        <property name="oauthProvidersNinjectVersion" value="${version::get-major(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${version::get-minor(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}.${version::get-build(fileversioninfo::get-product-version(fileversioninfo::get-version-info(oauthProvidersNinjectAssemblyName)))}-dev-${buildNumber}" />
+        <call target="create-packages" />
+        <call target="deploy-dev-packages" />
+    </target>
+    <target name="create-packages">
+        <exec program="${nuget}">
+            <arg value="pack" />
+            <arg value="${oauthProjectName}" />
+            <arg value="-OutputDirectory" />
+            <arg value="${oauthObjDirectory}" />
+            <arg value="-Version" />
+            <arg value="${oauthVersion}" />
+            <arg value="-Symbols" />
+            <arg value="-Properties" />
+            <arg value="Configuration=${config}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="pack" />
+            <arg value="${oauthProvidersProjectName}" />
+            <arg value="-OutputDirectory" />
+            <arg value="${oauthProvidersObjDirectory}" />
+            <arg value="-Version" />
+            <arg value="${oauthProvidersVersion}" />
+            <arg value="-Symbols" />
+            <arg value="-Properties" />
+            <arg value="Configuration=${config}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="pack" />
+            <arg value="${oauthProvidersDatabaseProjectName}" />
+            <arg value="-OutputDirectory" />
+            <arg value="${oauthProvidersDatabaseObjDirectory}" />
+            <arg value="-Version" />
+            <arg value="${oauthProvidersDatabaseVersion}" />
+            <arg value="-Symbols" />
+            <arg value="-Properties" />
+            <arg value="Configuration=${config}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="pack" />
+            <arg value="${oauthProvidersNinjectProjectName}" />
+            <arg value="-OutputDirectory" />
+            <arg value="${oauthProvidersNinjectObjDirectory}" />
+            <arg value="-Version" />
+            <arg value="${oauthProvidersNinjectVersion}" />
+            <arg value="-Symbols" />
+            <arg value="-Properties" />
+            <arg value="Configuration=${config}" />
+        </exec>
+    </target>
+    <target name="deploy-dev-packages">
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthObjDirectory}\${oauthName}.${oauthVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${packageSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersObjDirectory}\${oauthProvidersName}.${oauthProvidersVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${packageSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersDatabaseObjDirectory}\${oauthProvidersDatabaseName}.${oauthProvidersDatabaseVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${packageSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersNinjectObjDirectory}\${oauthProvidersNinjectName}.${oauthProvidersNinjectVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${packageSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthObjDirectory}\${oauthName}.${oauthVersion}.symbols.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${symbolsSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersObjDirectory}\${oauthProvidersName}.${oauthProvidersVersion}.symbols.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${symbolsSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersDatabaseObjDirectory}\${oauthProvidersDatabaseName}.${oauthProvidersDatabaseVersion}.symbols.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${symbolsSource}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersNinjectObjDirectory}\${oauthProvidersNinjectName}.${oauthProvidersNinjectVersion}.symbols.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+            <arg value="-Source" />
+            <arg value="${symbolsSource}" />
+        </exec>
+    </target>
+    <target name="deploy-packages">
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthObjDirectory}\${oauthName}.${oauthVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersObjDirectory}\${oauthProvidersName}.${oauthProvidersVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersDatabaseObjDirectory}\${oauthProvidersDatabaseName}.${oauthProvidersDatabaseVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+        </exec>
+        <exec program="${nuget}">
+            <arg value="push" />
+            <arg value="${oauthProvidersNinjectObjDirectory}\${oauthProvidersNinjectName}.${oauthProvidersNinjectVersion}.nupkg" />
+            <arg value="-ApiKey" />
+            <arg value="${apiKey}" />
+        </exec>
+    </target>
+    <target name="tag" depends="addRemote">
+        <exec program="${gitPath}">
+            <arg value="tag" />
+            <arg value="bamboo-build-${buildNumber}" />
+        </exec>
+        <exec program="${gitPath}">
+            <arg value="push" />
+            <arg value="gitOrigin" />
+            <arg value="--tags" />
+            <arg value="bamboo-build-${buildNumber}" />
+        </exec>
+    </target>
+    <target name="addRemote">
+        <exec program="${gitPath}">
+            <arg value="remote" />
+            <arg value="add" />
+            <arg value="gitOrigin" />
+            <arg value="https://${username}:${password}@github.com/Glipho/oauth-providers.git" />
+        </exec>
+    </target>
+</project>
